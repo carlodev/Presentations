@@ -1,0 +1,94 @@
+---
+title: "PhD Study Programme"
+subtitle: "Numerics & Experiments on Low-Speed High-Altitude Wings"
+date: "September 2022"
+author: "Carlo Brunelli"
+#jupiter: julia-1.7.3
+format:
+    revealjs: 
+        theme: dark
+scrollable: true
+mermaid-format: svg
+---
+
+# Project
+
+## High Altitude Pseudo Satellites:
+
+- Low Speed
+- Low Reynolds (250 000)
+- LSB: Laminar Separation Bubble
+- Passive Flow Control (riblets, discrete roughness ...) 
+
+---
+
+## Research Strategy {.smaller}
+- In depth literature study and identification of promising practices and geometries
+- Implementation of VMS into Julia-environment,
+- DNS simulation on a canonical geometry (low-Ma, low-Re airfoil)(possibly from literature to save time and resources provided adequate Ma and Re requirements are met)
+- Experiments on the canonical geometry (PIV, LDV, HW, IR-thermography, oil flow visualizations)
+- Validation of the VMS approach with DNS & experimental measurements
+- RANS simulations of various geometries and parametric study,
+- VMS-study of a set of interesting passive control features (LE-humps / distributed roughness / riblets / dimples)
+
+- Experiments on the canonical geometry with interesting passive control features
+- Measurements and VMS on an IR-reference set for the flight-tests
+- Support in the development of flight-test hardware (FSI, sleeve, camera mount, installation)
+- Flight-test campaign and analysis
+- Post-test assessment and conclusions
+- Continuous reporting & development of the documentation.
+
+
+
+# Collaborators{.smaller}
+
+| Project Director   | Prof. Bart Janssens, RMA |  
+| -------------: |:-------------|        
+|Researcher     | Carlo Brunelli | 
+| VKI Supervisor      | Prof. Georg May, VKI  |   
+| University Supervisor | Prof. Mark Runacres, VUB | 
+| Industrial Partner | STRATOS SOLUTION | 
+
+# The software
+
+## How it works
+```{mermaid}
+flowchart LR
+A[Gmsh] --> B[msh file]
+B[msh file] --> C[ExoFlow]
+D[Gridap] -- FE Library  --> C[ExoFlow]
+I[MPI] -- Multicore --> C[GridapDistributed]
+E[PETSc] -- Solver --> C[ExoFlow]
+F[GridapDistributed]-- Gridap for multicore --> C[ExoFlow]
+C[ExoFlow] --> G[results]
+-- Can be opened with --> H[Paraview]
+securityLevel='loose'
+click C "https://github.com/carlodev/ExoFlow"
+click C href "https://github.com/carlodev/ExoFlow"
+```
+
+## Features
+- Solve the incompressibile time dependent Navier Stokes for 2D laminar cases:
+    + Taylor Green Vortex
+    + LidDriven Cavity flow
+    + Flat Plate
+    + Airfoils
+    + Channel
+- Import meshes created by the user
+- Create mesh inside (for square/rectangular domains)
+- SUPG and VMS stabilization
+- θ-method and α-method for the ODEs solution
+- Customizable PETSc options
+- For airfoils, the velocity is increased form 0m/s up to the value of study, for stability
+- Works in parallel
+- [AirfoilGmsh](https://github.com/carlodev/GmshAirfoil) package for an automatic creation of airfoil structured meshes
+
+
+## Implementation and Results
+
+## Area of development
+- Performance/Optimization. The 3D analysis for complex geometries (airfoils) is not feasible yet
+- Imposing turbulence at the inlet (internally generated or libraries)
+- It seems too dissipative, the turbulent channel tends to go back to laminar
+- How to proper interface PETSc, expecially the preconditioner, critical for performances 
+
