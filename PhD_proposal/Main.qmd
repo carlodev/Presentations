@@ -6,7 +6,7 @@ author: "Carlo Brunelli"
 #jupiter: julia-1.7.3
 format: 
     revealjs:
-        theme: dark
+        theme: [beige, beige-adapt.scss]
 scrollable: true
 mermaid-format: svg
 smaller: true
