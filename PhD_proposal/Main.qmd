@@ -4,25 +4,41 @@ subtitle: "Numerics & Experiments on Low-Speed High-Altitude Wings"
 date: "September 2022"
 author: "Carlo Brunelli"
 #jupiter: julia-1.7.3
-format:
-    revealjs: 
+format: 
+    revealjs:
         theme: dark
 scrollable: true
 mermaid-format: svg
+smaller: true
+fig-cap-location: bottom
+
 ---
 
 # Project
 
 ## High Altitude Pseudo Satellites:
+:::: {.columns}
 
+::: {.column width="60%"}
 - Low Speed
 - Low Reynolds (250 000)
 - LSB: Laminar Separation Bubble
 - Passive Flow Control (riblets, discrete roughness ...) 
+:::
+
+::: {.column width="40%"}
+![Example of HAPS](Figures/HAPS.png)
+:::
+
+::::
+
+
+![DU89 at 4° AoA, velocity field](Figures/DU89.png){fig-align="left"}
+
 
 ---
 
-## Research Strategy {.smaller}
+## Research Strategy 
 - In depth literature study and identification of promising practices and geometries
 - Implementation of VMS into Julia-environment,
 - DNS simulation on a canonical geometry (low-Ma, low-Re airfoil)(possibly from literature to save time and resources provided adequate Ma and Re requirements are met)
@@ -40,14 +56,25 @@ mermaid-format: svg
 
 
 
-# Collaborators{.smaller}
-
+# Collaborators
 | Project Director   | Prof. Bart Janssens, RMA |  
 | -------------: |:-------------|        
 |Researcher     | Carlo Brunelli | 
 | VKI Supervisor      | Prof. Georg May, VKI  |   
 | University Supervisor | Prof. Mark Runacres, VUB | 
 | Industrial Partner | STRATOS SOLUTION | 
+
+::: {layout-ncol=3}
+![](Figures/RMA.png)
+
+![](Figures/VUB.png)
+
+![](Figures/VKI.png)
+:::
+
+
+![](Figures/STRATOS.png){fig-align="center"}
+
 
 # The software
 
@@ -62,33 +89,188 @@ E[PETSc] -- Solver --> C[ExoFlow]
 F[GridapDistributed]-- Gridap for multicore --> C[ExoFlow]
 C[ExoFlow] --> G[results]
 -- Can be opened with --> H[Paraview]
-securityLevel='loose'
 click C "https://github.com/carlodev/ExoFlow"
 click C href "https://github.com/carlodev/ExoFlow"
 ```
 
-## Features
-- Solve the incompressibile time dependent Navier Stokes for 2D laminar cases:
+## Features 
+- Solve the **incompressibile time-dependent Navier Stokes**
+- It has been tested for 2D laminar cases:
     + Taylor Green Vortex
     + LidDriven Cavity flow
     + Flat Plate
-    + Airfoils
-    + Channel
+    + Airfoil
+- It has been tested for caputuring turbulence on the 3D Channel
 - Import meshes created by the user
-- Create mesh inside (for square/rectangular domains)
+- Create mesh in the software (for square/rectangular domains)
 - SUPG and VMS stabilization
-- θ-method and α-method for the ODEs solution
+- θ-method and α-method for the ODEs solver
 - Customizable PETSc options
 - For airfoils, the velocity is increased form 0m/s up to the value of study, for stability
-- Works in parallel
+- Works in parallel - performance optimization is needed
 - [AirfoilGmsh](https://github.com/carlodev/GmshAirfoil) package for an automatic creation of airfoil structured meshes
 
+::: aside
 
-## Implementation and Results
+The use of the FEM package Gridap allows to have many tools for FE analysis and to write the equations almost 1:1 as on paper, for example:
 
-## Area of development
-- Performance/Optimization. The 3D analysis for complex geometries (airfoils) is not feasible yet
-- Imposing turbulence at the inlet (internally generated or libraries)
-- It seems too dissipative, the turbulent channel tends to go back to laminar
++ Rm(t, (u, p)) = ∂t(u) + u ⋅ ∇(u) + ∇(p) - hf(t) - ν*Δ(u) 
++ Rc(u) = ∇ ⋅ u
+
+:::
+
+
+
+# Implementation and Results
+
+
+---
+
+## Taylor Green Vortex
+
+::: {layout-ncol=2}
+![Mesh](Figures/TaylorVortex/mesh64.png){width="300"}
+
+![uhx](Figures/TaylorVortex/uhx.png){width="300"}
+
+![uhy](Figures/TaylorVortex/uhy.png){width="300"}
+
+![ph](Figures/TaylorVortex/ph.png){width="300"}
+
+:::
+
+---
+
+::: {layout-ncol=2}
+![Mesh error](Figures/TaylorVortex/TGV_Mesh_Error_page-0001.jpg){width="400"}
+
+![Pressure error](Figures/TaylorVortex/SUPG_ODE_page-0001.jpg){width="400"}
+
+![Velocity error](Figures/TaylorVortex/VMS_SUPG_u_page-0001.jpg){width="400"}
+
+![Pressure error](Figures/TaylorVortex/VMS_SUPG_p_page-0001.jpg){width="400"}
+
+:::
+
+---
+
+
+
+## Lid Driven Cavity Flow
+### Reynolds 1000
+::: {layout-ncol=2}
+
+![](Figures/LidDriven/UP/u1000.png){width="300"}
+
+![](Figures/LidDriven/UP/p1000.png){width="300"}
+
+![](Figures/LidDriven/LidDriven_Re_1000_VMSvsSUPG-1.png){width="400"}
+
+![](Figures/LidDriven/SUPG_VMS_1000-1.png){width="400"}
+
+:::
+
+---
+
+### Reynolds 5000
+::: {layout-ncol=2}
+
+![](Figures/LidDriven/UP/u5000.png){width="300"}
+
+![](Figures/LidDriven/UP/p5000.png){width="300"}
+
+![](Figures/LidDriven/LidDriven_Re_5000_VMSvsSUPG-1.png){width="400"}
+
+![](Figures/LidDriven/SUPG_VMS_5000-1.png){width="400"}
+
+:::
+
+---
+
+### Reynolds 10000
+::: {layout-ncol=2}
+
+![](Figures/LidDriven/UP/u10000.png){width="300"}
+
+![](Figures/LidDriven/UP/p10000.png){width="300"}
+
+![](Figures/LidDriven/LidDriven_Re_10000_VMSvsSUPG-1.png){width="400"}
+
+![](Figures/LidDriven/SUPG_VMS_10000-1.png){width="400"}
+
+:::
+
+---
+
+## Vortex Shedding
+![Shedding at Reynolds 1000, velocity](Figures/Cylinder/Shedding.png){width="600"}
+
+---
+
+::: {layout-ncol=2}
+
+![Drag Power Spectral Density](Figures/Cylinder/PSD_CD2-1.png)
+
+![Lift Power Spectral Density](Figures/Cylinder/PSD_CL2-1.png)
+:::
+
+---
+
+## Laminar Boundary Layer
+- $U_\infty = 10m/s$
+- $\nu = 10^{-5} m^2/s$
+- $H>>\delta$
+- Mesh: 250x400, refined close to the wall
+
+![Set up](Figures/BoundaryLayer/Transition-1.png){width="600"}
+![SUPG and VMS](Figures/BoundaryLayer/Plate_x03_SUPG_VMS-1.png){width="400"}
+
+## NACA 0012
+- Variational Multiscale Method
+- $Reynolds = 3\cdot 10^{6}$
+- AoA = 0°
+
+![Cp at 0° AoA, NACA0012](Figures/NACA0012/Cp_naca0012_0AoA-1.png){width="500"}
+
+
+---
+
+## Turbulent Channel - VMS
+- $Re_\tau = 395$
+- $\nu = 1.4545 \cdot 10^{-2} m^2/s$
+- $u_\tau = 5.7455 m/s$
+- $\tau_w = 3.301 \cdot 10^{-3} Pa$
+- $f_x = 3.301 \cdot 10^{-3} Pa/m$
+- Mesh: 32x32x32, refined close to the wall
+
+
+![Velocity contours](Figures/Channel/uh.png){height="300"}
+
+---
+
+
+![Normalized average velocity profile](Figures/Channel/Ch_ypup-1.jpg){height="300"}
+
+
+::: {layout-ncol=3}
+
+![u fluctuation](Figures/Channel/stdu-1.jpg)
+
+![v fluctuation](Figures/Channel/stdv-1.jpg)
+
+![w fluctuation](Figures/Channel/stdw-1.jpg)
+
+:::
+
+The average mean velocity profile is correctly caputured and also the fluctuation of the velocity in the x direction. However the fluctuations in the y and z direction are under-eximated, probably due too high bulk velocity, which need to converge.
+---
+
+## Area of development {.smaller}
+- Performance optimization. The 3D analysis for complex geometries (airfoils) is not feasible yet
+- Imposing turbulence at the inlet and as initial condition (databases/ recycling/ synthetic turbulence)
+- It seems too dissipative. The turbulent channel tends to go back to laminar, it can be also due to the initial conditions of white noise
 - How to proper interface PETSc, expecially the preconditioner, critical for performances 
+- Implements Discontinuous Galerkin
+- Use of the adjoint method in order to find better geometries
+- Try using also higher order elements
 
