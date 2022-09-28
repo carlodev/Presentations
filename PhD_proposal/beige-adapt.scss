@@ -1,0 +1,21 @@
+/*-- scss:defaults --*/
+
+$heading1TextShadow: none;
+$headingTextTransform: none;
+$mainFont: Source Sans Pro, Helvetica, sans-serif;
+$headingFontWeight: 400;
+
+/*-- scss:rules --*/
+
+.reveal .slide li > ol > li {
+  font-size: smaller;
+}
+
+.reveal .slide img {
+  margin: auto;
+  display: block;
+}
+
+.reveal .slide a {
+  font-size: small;
+}
