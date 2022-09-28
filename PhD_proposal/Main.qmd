@@ -214,7 +214,7 @@ The use of the FEM package Gridap allows to have many tools for FE analysis and 
 
 ![Drag Power Spectral Density](Figures/Cylinder/PSD_CD_St.png)
 
-![Lift Power Spectral Density](Figures/Cylinder/PSD_CL_St_.png)
+![Lift Power Spectral Density](Figures/Cylinder/PSD_CL_St.png)
 :::
 
 ---
@@ -233,9 +233,12 @@ The use of the FEM package Gridap allows to have many tools for FE analysis and 
 - $Reynolds = 3\cdot 10^{6}$
 - AoA = 0°
 
-![Cp at 0° AoA, NACA0012](Figures/NACA0012/Cp_naca0012_0AoA-1.png){width="500"}
+::: {layout-ncol=2}
 
+![Cp at 0° AoA, NACA0012](Figures/NACA0012/Cp_naca0012_0AoA-1.png)
 
+![Cf at 0° AoA, NACA0012](Figures/NACA0012/Cf_naca0012_0AoA.png)
+:::
 ---
 
 ## Turbulent Channel - VMS
