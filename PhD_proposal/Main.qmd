@@ -6,7 +6,7 @@ author: "Carlo Brunelli"
 #jupiter: julia-1.7.3
 format: 
     revealjs:
-        theme: dark
+        theme: default
 scrollable: true
 mermaid-format: svg
 smaller: true
@@ -39,13 +39,18 @@ fig-cap-location: bottom
 ---
 
 ## Research Strategy 
-- In depth literature study and identification of promising practices and geometries
-- Implementation of VMS into Julia-environment,
-- DNS simulation on a canonical geometry (low-Ma, low-Re airfoil)(possibly from literature to save time and resources provided adequate Ma and Re requirements are met)
+- Identification of promising practices and geometries
+- Implementation of VMS into Julia-environment
+- DNS simulation on a canonical geometry (low-Ma, low-Re airfoil)
+
+---
+
 - Experiments on the canonical geometry (PIV, LDV, HW, IR-thermography, oil flow visualizations)
 - Validation of the VMS approach with DNS & experimental measurements
-- RANS simulations of various geometries and parametric study,
+- RANS simulations of various geometries and parametric study
 - VMS-study of a set of interesting passive control features (LE-humps / distributed roughness / riblets / dimples)
+
+---
 
 - Experiments on the canonical geometry with interesting passive control features
 - Measurements and VMS on an IR-reference set for the flight-tests
@@ -53,8 +58,6 @@ fig-cap-location: bottom
 - Flight-test campaign and analysis
 - Post-test assessment and conclusions
 - Continuous reporting & development of the documentation.
-
-
 
 # Collaborators
 | Project Director   | Prof. Bart Janssens, RMA |  
@@ -209,9 +212,9 @@ The use of the FEM package Gridap allows to have many tools for FE analysis and 
 
 ::: {layout-ncol=2}
 
-![Drag Power Spectral Density](Figures/Cylinder/PSD_CD2-1.png)
+![Drag Power Spectral Density](Figures/Cylinder/PSD_CD_St.png)
 
-![Lift Power Spectral Density](Figures/Cylinder/PSD_CL2-1.png)
+![Lift Power Spectral Density](Figures/Cylinder/PSD_CL_St_.png)
 :::
 
 ---
