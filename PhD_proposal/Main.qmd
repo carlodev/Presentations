@@ -39,12 +39,14 @@ fig-cap-location: bottom
 ---
 
 ## Research Strategy 
+### Starting
 - Identification of promising practices and geometries
 - Implementation of VMS into Julia-environment
-- DNS simulation on a canonical geometry (low-Ma, low-Re airfoil)
+- Simulation on a canonical geometry (low-Ma, low-Re airfoil)
 
 ---
 
+### Continuing
 - Experiments on the canonical geometry (PIV, LDV, HW, IR-thermography, oil flow visualizations)
 - Validation of the VMS approach with DNS & experimental measurements
 - RANS simulations of various geometries and parametric study
@@ -52,6 +54,7 @@ fig-cap-location: bottom
 
 ---
 
+### Ending
 - Experiments on the canonical geometry with interesting passive control features
 - Measurements and VMS on an IR-reference set for the flight-tests
 - Support in the development of flight-test hardware (FSI, sleeve, camera mount, installation)
@@ -165,8 +168,9 @@ The use of the FEM package Gridap allows to have many tools for FE analysis and 
 
 ---
 
+<!--- ![Mesh error](Figures/TaylorVortex/TGV_Mesh_Error_page-0001.jpg){width="400"} --->
 ::: {layout-ncol=2}
-![Mesh error](Figures/TaylorVortex/TGV_Mesh_Error_page-0001.jpg){width="400"}
+![Mesh error](Figures/TaylorVortex/Taylor_Vortex-1.jpg){width="400"}
 
 ![Pressure error](Figures/TaylorVortex/SUPG_ODE_page-0001.jpg){width="400"}
 
