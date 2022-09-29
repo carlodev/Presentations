@@ -60,12 +60,29 @@ fig-cap-location: bottom
 - Continuous reporting & development of the documentation.
 
 # Collaborators
+:::: {.columns}
+
+::: {.column width="60%"}
 | Project Director   | Prof. Bart Janssens, RMA |  
 | -------------: |:-------------|        
 |Researcher     | Carlo Brunelli | 
 | VKI Supervisor      | Prof. Georg May, VKI  |   
 | University Supervisor | Prof. Mark Runacres, VUB | 
-| Industrial Partner | STRATOS SOLUTION | 
+:::
+
+::: {.column width="40%"}
+| Prof. Benoit Marinus, RMA |  
+| -------------: |:-------------|        
+| Matija Avirovic | 
+:::
+
+:::
+
+
+<!---
+ | Industrial Partner | STRATOS SOLUTION | --->
+
+
 
 ::: {layout-ncol=3}
 ![](Figures/RMA.png)
@@ -76,7 +93,7 @@ fig-cap-location: bottom
 :::
 
 
-![](Figures/STRATOS.png){fig-align="center"}
+<!--- ![](Figures/STRATOS.png){fig-align="center"} --->
 
 
 # The software
@@ -94,6 +111,10 @@ C[ExoFlow] --> G[results]
 -- Can be opened with --> H[Paraview]
 click C "https://github.com/carlodev/ExoFlow"
 click C href "https://github.com/carlodev/ExoFlow"
+
+linkStyle 0,1,2,3,4,5,6,7 stroke:#3e747f, stroke-width:4px,color:black;
+classDef norm fill:#c5d5d8, stroke-width:0px;
+style C fill:#2986CC,stroke:#333,stroke-width:4px
 ```
 
 ## Features 
@@ -280,3 +301,4 @@ The average mean velocity profile is correctly caputured and also the fluctuatio
 - Use of the adjoint method in order to find better geometries
 - Try using also higher order elements
 
+![2D Synthetic Eddy Method (SEM)](Figures/SEM_EddyGenerations.gif)
