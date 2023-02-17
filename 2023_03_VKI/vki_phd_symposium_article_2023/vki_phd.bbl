@@ -1,0 +1,51 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{Selig1997HighLiftLR}
+M.~S. Selig, J.~J. Guglielmo, High-lift low reynolds number airfoil design,
+  Journal of aircraft 34~(1) (1997) 72--79.
+
+\bibitem{Abhijit13}
+A.~Mitra, P.~Gokul, O.~Ramesh, The role of laminar separation bubble on low
+  reynolds number airfoils, in: 51st AIAA Aerospace Sciences Meeting including
+  the New Horizons Forum and Aerospace Exposition, 2013, p.~59.
+
+\bibitem{OMeara87}
+M.~O'meara, T.~J. Mueller, Laminar separation bubble characteristics on an
+  airfoil at low reynolds numbers, AIAA journal 25~(8) (1987) 1033--1041.
+
+\bibitem{Bazilevs2007}
+Y.~Bazilevs, V.~Calo, J.~Cottrell, T.~Hughes, A.~Reali, Scovazzi, Variational
+  multiscale residual-based turbulence modeling for large eddy simulation of
+  incompressible flows, Computer methods in applied mechanics and engineering
+  197~(1-4) (2007) 173--201.
+
+\bibitem{Badia2020}
+S.~Badia, F.~Verdugo, Gridap: An extensible finite element toolbox in julia,
+  Journal of Open Source Software 5~(52) (2020) 2520.
+\newblock \href {http://dx.doi.org/10.21105/joss.02520}
+  {\path{doi:10.21105/joss.02520}}.
+
+\bibitem{Verdugo2022}
+F.~Verdugo, S.~Badia, The software design of gridap: A finite element package
+  based on the julia {JIT} compiler, Computer Physics Communications 276 (2022)
+  108341.
+\newblock \href {http://dx.doi.org/10.1016/j.cpc.2022.108341}
+  {\path{doi:10.1016/j.cpc.2022.108341}}.
+
+\bibitem{petsc-web-page}
+S.~Balay, S.~Abhyankar, M.~F. Adams, S.~Benson, J.~Brown, P.~Brune,
+  K.~Buschelman, E.~M. Constantinescu, L.~Dalcin, A.~Dener, V.~Eijkhout,
+  J.~Faibussowitsch, W.~D. Gropp, V.~Hapla, T.~Isaac, P.~Jolivet, D.~Karpeev,
+  D.~Kaushik, M.~G. Knepley, F.~Kong, S.~Kruger, D.~A. May, L.~C. McInnes,
+  R.~T. Mills, L.~Mitchell, T.~Munson, J.~E. Roman, K.~Rupp, P.~Sanan,
+  J.~Sarich, B.~F. Smith, S.~Zampini, H.~Zhang, H.~Zhang, J.~Zhang,
+  \href{https://petsc.org/}{{PETS}c {W}eb page}, \url{https://petsc.org/}
+  (2022).
+\newline\urlprefix\url{https://petsc.org/}
+
+\end{thebibliography}
