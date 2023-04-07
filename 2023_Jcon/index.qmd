@@ -1,0 +1,137 @@
+---
+title: "Synthetic Eddy Method"
+subtitle: "New Julia package for eddy generation"
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    css: styles.css
+    footer: <https://github.com/carlodev/SyntheticEddyMethod.jl>
+    logo: images/logos/logo_20.svg
+    reference-location: margin
+jupyter: julia-1.8
+execute:
+  echo: true
+bibliography: references.bib
+title-slide-attributes:
+  data-background-image: images/logos/logo.png
+  data-background-size: 15%
+  data-background-position: 50% 75%
+---
+
+## Welcome
+
+This presentation will show you features and usage examples of [SyntheticEddyMethod.jl](https://github.com/carlodev/SyntheticEddyMethod.jl)
+
+-   Motivation
+-   Features
+-   Foundation
+-   Usage
+-   Validation
+
+
+## Motivation
+- A Julia Package
+- Rrealistic turbulent fluctuations for fluid dynamic simulations. 
+- One of the major method beside precursor simulator and databases.
+
+## Features
+- Creation of Synthetic Eddies, @Jarrin2006
+- Chose between different shape functions
+- Impose the Reynolds stress (globally or locally) / Turbulence Intensity
+- Divergence-free constraint, @Poletto2013
+- It can be coupled with a fludid dynamic code solver, or used stand-alone and save the produced results which can be then read by the code.
+
+## Synthetic Eddy Method Foundation
+
+``` {=tex}
+\begin{equation}
+    \vec{u}(\vec{x},t) = \vec{U}(\vec{x},t) +  \vec{u'}(\vec{x},t)
+\end{equation}
+```
+
+Creation of random located eddies, with prescribed dimension and random intensity (-1 or 1). At each time step they are convected $U_x\cdot dt$.
+
+Virtual Box: space where the eddies are created and covected.
+When one eddy exits the box, it is automatically recreated on the the other side at random location.
+
+
+
+
+
+## Usage
+Virtual Box Creation
+```{julia}
+using SyntheticEddyMethod
+σ = 0.1
+b = 5.0
+a = 0.0
+y = collect(a:0.1:b)
+z = collect(a:0.1:b)
+Vboxinfo = VirtualBox(y,z,σ)
+```
+
+The Eddy creation is based on the use of shape function: tent, step or gaussian.
+
+##
+Eddies' centre location in the Virtual Box
+
+![](/images/Eddy_position.png){width="400"}
+
+
+
+## Usage
+Providing the Reynolds stress tensor, eddy dimension, and the size of the domain.
+```{julia}
+dt = 0.001
+U₀ = 1.0
+TI = 0.01 #turbulence intensity
+
+Re_stress, Eddies = initialize_eddies(U₀, TI, Vboxinfo)
+Eddies[1]
+```
+
+
+
+
+## Usage
+```{julia}
+point = [0.0, 1.0, 2.5];
+```
+
+Compute the velocity fluctuation.
+```{julia}
+u_fluct = compute_fluct(point, dt, Eddies, U₀, Vboxinfo, Re_stress)
+```
+
+## Validation
+It shows good statistical properties.
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-then-out}
+Mean value of the fluctuations is zero
+
+![](/images/SEM_mean1.png){height="200"}
+:::
+::: {.fragment .fade-in-then-out}
+Good autocorrelation properties
+
+![](/images/autocorr.png){width="600"}
+:::
+::: {.fragment .fade-in-then-out}
+Ability to create a quasi non-zero divergence free flow
+
+![](/images/Div_free_plane.png){width="600"}
+:::
+
+::: {.fragment .fade-in-then-out}
+Standard deviation of the fluctuation is the prescribed turbulence intensity
+:::
+:::
+
+
+
+## References
