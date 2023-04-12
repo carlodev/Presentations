@@ -413,34 +413,64 @@
   <p class="subtitle">New Julia package for eddy generation</p>
 </section>
 
-<section id="welcome" class="slide level2">
-<h2>Welcome</h2>
-<p>This presentation will show you features and usage examples of <a href="https://github.com/carlodev/SyntheticEddyMethod.jl">SyntheticEddyMethod.jl</a></p>
-<ul>
-<li>Motivation</li>
-<li>Features</li>
-<li>Foundation</li>
-<li>Usage</li>
-<li>Validation</li>
-</ul>
+<section id="who" class="slide level2">
+<h2>Who</h2>
+<p>Carlo Brunelli, PhD Student at RMA</p>
+<p><img data-src="/images/Brunelli_Carlo_ph.jpg" style="width:20.0%"></p>
+<p><img data-src="/images/logos/RMA_nobg.png" style="width:10.0%"></p>
+<!-- ::: {.notes}
+Hello everyone, it is a pleasure to be at JuliaCon.
+Welcome to the presentation of a new Julia pakcage: SyntheticEddyMethod, in which I have been working on the last months
+::: -->
 </section>
-<section id="motivation" class="slide level2">
-<h2>Motivation</h2>
+<section id="why-syntheticeddymethod" class="slide level2">
+<h2>Why SyntheticEddyMethod?</h2>
+<div>
 <ul>
-<li>A Julia Package</li>
-<li>Rrealistic turbulent fluctuations for fluid dynamic simulations.</li>
-<li>One of the major method beside precursor simulator and databases.</li>
+<li class="fragment">A Julia Package</li>
+<li class="fragment">Realistic turbulent fluctuations for fluid dynamic simulations</li>
+<li class="fragment">Prediction of transition</li>
+<li class="fragment">One of the major method beside precursor simulator and databases.</li>
 </ul>
+</div>
+<aside class="notes">
+<p>In the field of fluid mechanics for high fidelity simulations, has arisen the need of creating turbulent intial initial or inlet conditions. For example when simulating the flow in a pipe, or over an airfoil, the flow can be strongly dependent on the boundary conditions. The SEM package aims to be used to recreate numerically realistic eddys.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="features" class="slide level2">
 <h2>Features</h2>
+<div>
 <ul>
-<li>Creation of Synthetic Eddies, <span class="citation" data-cites="Jarrin2006">Jarrin et al. (<a href="#/references" role="doc-biblioref" onclick="">2006</a>)</span></li>
-<li>Chose between different shape functions</li>
-<li>Impose the Reynolds stress (globally or locally) / Turbulence Intensity</li>
-<li>Divergence-free constraint, <span class="citation" data-cites="Poletto2013">Poletto, Craft, and Revell (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span></li>
-<li>It can be coupled with a fludid dynamic code solver, or used stand-alone and save the produced results which can be then read by the code.</li>
+<li class="fragment">Creation of Synthetic Eddies, <span class="citation" data-cites="Jarrin2006">Jarrin et al. (<a href="#/references" role="doc-biblioref" onclick="">2006</a>)</span></li>
+<li class="fragment">Chose between different shape functions</li>
+<li class="fragment">Impose the Reynolds stress (globally or locally) / Turbulence Intensity</li>
+<li class="fragment">Divergence-free constraint, <span class="citation" data-cites="Poletto2013">Poletto, Craft, and Revell (<a href="#/references" role="doc-biblioref" onclick="">2013</a>)</span></li>
+<li class="fragment">It can be coupled with a fludid dynamic code solver, or used stand-alone and save the produced results which can be then read by the code.</li>
 </ul>
+</div>
+<aside class="notes">
+<p>At the moment, it has implemented the basic method of creating synthetic eddy established by Jarrin. It allows the user to chose between different shape functions (gaussian, tent or step). The user can impose a Renolds stress tensor that aims to recreate. It is also possible to import a spreasheet where different stress tensor are defined in different points of the domain (for example for a wall-bounded-flow). Furtheremore, it is possible to create fluctuations which are divergence free, fundamental for having more realistic eddyis for incompressible flows. At the end, more a suggestion of usage, it can be coupled</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="synthetic-eddy-method-foundation" class="slide level2">
 <h2>Synthetic Eddy Method Foundation</h2>
@@ -449,6 +479,19 @@
 \end{equation}\]</span>
 <p>Creation of random located eddies, with prescribed dimension and random intensity (-1 or 1). At each time step they are convected <span class="math inline">\(U_x\cdot dt\)</span>.</p>
 <p>Virtual Box: space where the eddies are created and covected. When one eddy exits the box, it is automatically recreated on the the other side at random location.</p>
+<aside class="notes">
+<p>The SEM aims to recreate fluctuations which can be added to a mean velocity profile. The idea is to put the inlet plane in a virtual box, where eddies are randomly generated and convected.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="usage" class="slide level2">
 <h2>Usage</h2>
@@ -461,7 +504,7 @@
 <span id="cb1-5"><a href="#cb1-5"></a>y <span class="op">=</span> <span class="fu">collect</span>(a<span class="op">:</span><span class="fl">0.1</span><span class="op">:</span>b)</span>
 <span id="cb1-6"><a href="#cb1-6"></a>z <span class="op">=</span> <span class="fu">collect</span>(a<span class="op">:</span><span class="fl">0.1</span><span class="op">:</span>b)</span>
 <span id="cb1-7"><a href="#cb1-7"></a>Vboxinfo <span class="op">=</span> <span class="fu">VirtualBox</span>(y,z,σ)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="266">
+<div class="cell-output cell-output-display" data-execution_count="44">
 <pre><code>VirtualBox
 σ = [0.1, 0.1, 0.1]
 N = 2704
@@ -477,12 +520,37 @@ Z_end = 5.1</code></pre>
 </div>
 </div>
 <p>The Eddy creation is based on the use of shape function: tent, step or gaussian.</p>
+<aside class="notes">
+<p>But let’s see how to use it. The user has to define sigma, the Eddis dimension, and the size of the inlet plane. You may notice that in the <span class="math inline">\(x\)</span> direction the extension is from -sigma to +sigma. The VirtualBox is created. As you may notice, the default shape function is the tent function. It is also possible to specify 3 different size of eddy along the 3 axes.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<p>Eddies’ centre location in the Virtual Box</p>
 
-<img data-src="/images/Eddy_position.png" width="400" class="r-stretch"></section>
+<img data-src="/images/Eddy_position.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p class="caption">Eddies’ centre location in the Virtual Box</p><aside class="notes">
+<p>Each Eddy has a centre, here is the representation of some of them.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
 <section id="usage-1" class="slide level2">
 <h2>Usage</h2>
 <p>Providing the Reynolds stress tensor, eddy dimension, and the size of the domain.</p>
@@ -493,14 +561,27 @@ Z_end = 5.1</code></pre>
 <span id="cb3-4"><a href="#cb3-4"></a></span>
 <span id="cb3-5"><a href="#cb3-5"></a>Re_stress, Eddies <span class="op">=</span> <span class="fu">initialize_eddies</span>(U₀, TI, Vboxinfo)</span>
 <span id="cb3-6"><a href="#cb3-6"></a>Eddies[<span class="fl">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="267">
+<div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>SemEddy
 eddy_num = 1
 σ = [0.1, 0.1, 0.1]
-xᵢ = [-0.09011245910827684, 4.425350791667276, 2.64322321823985]
-ϵᵢ = [1.0, 1.0, -1.0]</code></pre>
+xᵢ = [0.06662375354606168, 3.213629837235756, 2.1103427390257536]
+ϵᵢ = [-1.0, 1.0, -1.0]</code></pre>
 </div>
 </div>
+<aside class="notes">
+<p>The user provide the velocity in the x direction, and one of the possibility is to provide the turbulence intensity. The new abstract Type Eddy has been introduces, and SemEddy is a concrete type. Each eddy has a centre or location, which is updated (the x coordinate) when the fluctuations are evaluated at a nex time step. They can contribute reducing or increasing the velocity, thats the meaning f epsilon.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="usage-2" class="slide level2">
 <h2>Usage</h2>
@@ -510,34 +591,101 @@ xᵢ = [-0.09011245910827684, 4.425350791667276, 2.64322321823985]
 <p>Compute the velocity fluctuation.</p>
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1"></a>u_fluct <span class="op">=</span> <span class="fu">compute_fluct</span>(point, dt, Eddies, U₀, Vboxinfo, Re_stress)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="269">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>3-element Vector{Float64}:
-  1.0028659568454898
-  0.006498122182570556
- -0.00126448279263277</code></pre>
+  0.9992898930929675
+ -0.0007101069070325825
+  0.0007101069070325825</code></pre>
 </div>
 </div>
+<aside class="notes">
+<p>We fix a point on the inlet plane, where we want to get the fluctuation. And finally we get the fluctutation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="validation" class="slide level2">
 <h2>Validation</h2>
-<p>It shows good statistical properties.</p>
+<p>Statistical validation</p>
 <div class="r-stack">
 <div class="fragment fade-in-then-out">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="/images/Spectra.png" style="width:130.0%"></p>
+<p></p><figcaption>Turbulent spectra</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="fragment fade-in-then-out">
 <p>Mean value of the fluctuations is zero</p>
-<p><img data-src="/images/SEM_mean1.png" height="200"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="/images/SEM_mean1.png" style="height:50.0%"></p>
+<p></p><figcaption>v’ cumulated mean</figcaption><p></p>
+</figure>
+</div>
 </div>
 <div class="fragment fade-in-then-out">
-<p>Good autocorrelation properties</p>
-<p><img data-src="/images/autocorr.png" width="600"></p>
+<p>Autocorrelation properties</p>
+<p><img data-src="/images/autocorr.png" style="width:70.0%"></p>
 </div>
 <div class="fragment fade-in-then-out">
-<p>Ability to create a quasi non-zero divergence free flow</p>
-<p><img data-src="/images/Div_free_plane.png" width="600"></p>
+<p>Ability to create a quasi non-zero divergence free flow.</p>
+<span class="math display">\[\begin{equation}
+   \dfrac{\nabla\cdot \vec{u}}{|\nabla \vec{u}|}
+\end{equation}\]</span>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="/images/Div_free_plane.png" width="800"></p>
+<p></p><figcaption>normalized divergence</figcaption><p></p>
+</figure>
+</div>
 </div>
 <div class="fragment fade-in-then-out">
 <p>Standard deviation of the fluctuation is the prescribed turbulence intensity</p>
 </div>
 </div>
+<aside class="notes">
+<p>The features of the package have been statistically validated. It creates a turbulent spectra, with the decay in the sub inertial reagion close to the well know -5/3 trend. Here we can see that the effort has produced the expected results, expecially in comparison with the random fluctuation which spectra is not realistic. The mean value of the fluctuation converge towards zero. It has good autocorrelation properties. It has the ability to created a flow divergence free almost everywhere, and the standard deviation is the given turbulence intensity.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="examples" class="slide level2">
+<h2>Examples</h2>
+
+<img data-src="/images/Isovel.png" style="width:100.0%" class="r-stretch quarto-figure-center"><p class="caption">Isovelocity contour of fluctuations, as initial condition for a turbulent channel</p></section>
+<section id="conclusions" class="slide level2">
+<h2>Conclusions</h2>
+<aside class="notes">
+<p>In conclusion, I hope this package can be another tool for researchers and engineers in the field of fluid dynamics for obtaining better and better simulations. It can be directly coupled with some CFD code for creating suitable boundary conditions, or previously run, save and re-load the results in the simulation.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>

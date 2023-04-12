@@ -21,28 +21,47 @@ title-slide-attributes:
   data-background-position: 50% 75%
 ---
 
-## Welcome
+## Who
+Carlo Brunelli, PhD Student at RMA
 
-This presentation will show you features and usage examples of [SyntheticEddyMethod.jl](https://github.com/carlodev/SyntheticEddyMethod.jl)
+![](/images/Brunelli_Carlo_ph.jpg){width=20%}
 
--   Motivation
--   Features
--   Foundation
--   Usage
--   Validation
+![](/images/logos/RMA_nobg.png){width=10%}
 
+<!-- ::: {.notes}
+Hello everyone, it is a pleasure to be at JuliaCon.
+Welcome to the presentation of a new Julia pakcage: SyntheticEddyMethod, in which I have been working on the last months
+::: -->
 
-## Motivation
+## Why SyntheticEddyMethod?
+
+::: {.incremental}
 - A Julia Package
-- Rrealistic turbulent fluctuations for fluid dynamic simulations. 
+- Realistic turbulent fluctuations for fluid dynamic simulations
+- Prediction of transition
 - One of the major method beside precursor simulator and databases.
+:::
+
+
+::: {.notes}
+In the field of fluid mechanics for high fidelity simulations, has arisen the need of creating turbulent intial initial or inlet conditions. For example when simulating the flow in a pipe, or over an airfoil, the flow can be strongly dependent on the boundary conditions. The SEM package aims to be used to recreate numerically realistic eddys.
+:::
 
 ## Features
+::: {.incremental}
 - Creation of Synthetic Eddies, @Jarrin2006
 - Chose between different shape functions
 - Impose the Reynolds stress (globally or locally) / Turbulence Intensity
 - Divergence-free constraint, @Poletto2013
 - It can be coupled with a fludid dynamic code solver, or used stand-alone and save the produced results which can be then read by the code.
+:::
+
+::: {.notes}
+At the moment, it has implemented the basic method of creating synthetic eddy established by Jarrin. It allows the user to chose between different shape functions (gaussian, tent or step).
+The user can impose a Renolds stress tensor that aims to recreate. It is also possible to import a spreasheet where different stress tensor are defined in different points of the domain (for example for a wall-bounded-flow). 
+Furtheremore, it is possible to create fluctuations which are divergence free, fundamental for having more realistic eddyis for incompressible flows.
+At the end, more a suggestion of usage, it can be coupled
+:::
 
 ## Synthetic Eddy Method Foundation
 
@@ -57,7 +76,9 @@ Creation of random located eddies, with prescribed dimension and random intensit
 Virtual Box: space where the eddies are created and covected.
 When one eddy exits the box, it is automatically recreated on the the other side at random location.
 
-
+::: {.notes}
+The SEM aims to recreate fluctuations which can be added to a mean velocity profile. The idea is to put the inlet plane in a virtual box, where eddies are randomly generated and convected. 
+:::
 
 
 
@@ -75,12 +96,20 @@ Vboxinfo = VirtualBox(y,z,σ)
 
 The Eddy creation is based on the use of shape function: tent, step or gaussian.
 
+::: {.notes}
+But let's see how to use it. The user has to define sigma, the Eddis dimension, and the size of the inlet plane. You may notice that in the $x$ direction the extension is from -sigma to +sigma.
+The VirtualBox is created. As you may notice, the default shape function is the tent function. It is also possible to specify 3 different size of eddy along the 3 axes. 
+:::
+
+
+
 ##
-Eddies' centre location in the Virtual Box
 
-![](/images/Eddy_position.png){width="400"}
+![Eddies' centre location in the Virtual Box](/images/Eddy_position.png){width=80%}
 
-
+::: {.notes}
+Each Eddy has a centre, here is the representation of some of them.
+:::
 
 ## Usage
 Providing the Reynolds stress tensor, eddy dimension, and the size of the domain.
@@ -93,6 +122,10 @@ Re_stress, Eddies = initialize_eddies(U₀, TI, Vboxinfo)
 Eddies[1]
 ```
 
+::: {.notes}
+The user provide the velocity in the x direction, and one of the possibility is to provide the turbulence intensity.
+The new abstract Type Eddy has been introduces, and SemEddy is a concrete type. Each eddy has a centre or location, which is updated (the x coordinate) when the fluctuations are evaluated at a nex time step. They can contribute reducing or increasing the velocity, thats the meaning f epsilon.
+:::
 
 
 
@@ -101,30 +134,45 @@ Eddies[1]
 point = [0.0, 1.0, 2.5];
 ```
 
+
 Compute the velocity fluctuation.
 ```{julia}
 u_fluct = compute_fluct(point, dt, Eddies, U₀, Vboxinfo, Re_stress)
 ```
 
+::: {.notes}
+We fix a point on the inlet plane, where we want to get the fluctuation.
+And finally we get the fluctutation.
+:::
+
 ## Validation
-It shows good statistical properties.
+Statistical validation
 
 ::: {.r-stack}
+::: {.fragment .fade-in-then-out}
+![Turbulent spectra](/images/Spectra.png){width=130%}
+:::
 
 ::: {.fragment .fade-in-then-out}
 Mean value of the fluctuations is zero
 
-![](/images/SEM_mean1.png){height="200"}
+![v' cumulated mean](/images/SEM_mean1.png){height=50%}
 :::
 ::: {.fragment .fade-in-then-out}
-Good autocorrelation properties
+Autocorrelation properties
 
-![](/images/autocorr.png){width="600"}
+![](/images/autocorr.png){width=70%}
 :::
 ::: {.fragment .fade-in-then-out}
-Ability to create a quasi non-zero divergence free flow
+Ability to create a quasi non-zero divergence free flow.
 
-![](/images/Div_free_plane.png){width="600"}
+``` {=tex}
+\begin{equation}
+   \dfrac{\nabla\cdot \vec{u}}{|\nabla \vec{u}|}
+\end{equation}
+```
+
+![normalized divergence](/images/Div_free_plane.png){width="800"}
 :::
 
 ::: {.fragment .fade-in-then-out}
@@ -132,6 +180,21 @@ Standard deviation of the fluctuation is the prescribed turbulence intensity
 :::
 :::
 
+::: {.notes}
+The features of the package have been statistically validated. It creates a turbulent spectra, with the decay in the sub inertial reagion close to the well know -5/3 trend. Here we can see that the effort has produced the expected results, expecially in comparison with the random fluctuation which spectra is not realistic.
+The mean value of the fluctuation converge towards zero.
+It has good autocorrelation properties.
+It has the ability to created a flow divergence free almost everywhere, and the standard deviation is the given turbulence intensity.
+:::
+
+
+## Examples
+![Isovelocity contour of fluctuations, as initial condition for a turbulent channel](/images/Isovel.png){width=100%}
+
+## Conclusions
+::: {.notes}
+ In conclusion, I hope this package can be another tool for researchers and engineers in the field of fluid dynamics for obtaining better and better simulations. It can be directly coupled with some CFD code for creating suitable boundary conditions, or previously run, save and re-load the results in the simulation.
+:::
 
 
 ## References
