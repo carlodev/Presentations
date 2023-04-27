@@ -1,0 +1,16 @@
+/*-- scss:defaults --*/
+
+$heading1TextShadow: none;
+$headingTextTransform: none;
+$mainFont: Source Sans Pro, Helvetica, sans-serif;
+$presentation-heading-color: #006c86 !default;
+
+//Body
+$body-bg: #f0f1eb !default;
+$body-color: #004152 !default;
+/*-- scss:rules --*/
+
+.reveal .slide p {
+  color:#004152;
+  text-align: left;
+}

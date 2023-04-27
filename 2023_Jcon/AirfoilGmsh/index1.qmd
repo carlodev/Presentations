@@ -1,0 +1,134 @@
+---
+title: "AirfoilGmsh"
+subtitle: "New Julia package for airfoil meshing automatization"
+author: Carlo Brunelli
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    footer: <https://github.com/carlodev/AirfoilGmsh.jl>
+    logo: images/logos/logo_20.svg
+    reference-location: margin
+    theme: [default, mytheme.scss]
+
+jupyter: julia-1.8
+execute:
+  echo: true
+code-block-border-left: true
+code-block-bg: true
+code-block-border-left: "#31BAE9"
+---
+
+## Who
+Carlo Brunelli, PhD Student at RMA
+
+![](/images/Brunelli_Carlo_ph.jpg){.absolute top=35% left=40% width=20%}
+
+![ ](/images/logos/RMA_nobg.png){.absolute top=85% left=45% width=15%}
+
+::: {.notes}
+Hello everyone, it is a pleasure to be at JuliaCon.
+Welcome to the presentation of a new Julia pakcage: AirfoilGmsh, in which I have been working on
+::: 
+
+
+## Why AirfoilGmsh? {.smaller}
+
+::: {.incremental}
+- Automatization of structured mesh for airfoils
+- Avoiding routine operations
+- Creates .geo file
+:::
+
+:::: {.columns} 
+
+::: {.column width="50%"}
+
+geo file, $\approx$ 200 code lines 
+```{geo}
+Point(65) = {0.96194*Cos(AoA) + -0.00463*Sin(AoA),-1* 0.96194*Sin(AoA) + -0.00463*Cos(AoA),0.0,a_dim};
+Point(66) = {0.98296*Cos(AoA) + -0.00218*Sin(AoA),-1* 0.98296*Sin(AoA) + -0.00218*Cos(AoA),0.0,a_dim};
+Point(67) = {1.0*Cos(AoA) + -0.00057*Sin(AoA),-1* 1.0*Sin(AoA) + -0.00057*Cos(AoA),0.0,a_dim};
+Spline(1) = {1:26};
+Spline(2) = {26:42};
+Line(3) = {1, 67};
+Spline(4) = {42:67};
+Point(68) = {0, C, 0};
+Point(69) = {0, -C, 0};
+Point(70) = {L, C, 0};
+Point(71) = {L, -C, 0};
+Point(72) = {1.0, C, 0};
+Point(73) = {1.0, -C, 0};
+```
+
+:::
+
+::: {.column width="50%"}
+msh file, $\approx$ 20K code lines 
+
+```{msh}
+$Entities
+82 29 11 0
+1 1 0.00057 0 1 6 
+2 0.9829599999999999 0.00218 0 0 
+3 0.96194 0.00463 0 0 
+4 0.93301 0.0077 0 0 
+5 0.89668 0.01127 0 0 
+6 0.85355 0.01522 0 0 
+7 0.80438 0.01945 0 0 
+8 0.75 0.02384 0 0 
+9 0.69134 0.02823 0 0 
+```
+:::
+
+::::
+
+
+
+::: {.notes}
+I would like to start saying why I started developing this tool. I found myself testing different airfoils. I found myself spending most of the time in meshing-routine operations, using GMSH meshers. For who does not know, it is a free open source meshers. So I hope this can save you some time. 
+It creates .geo file, which are read by GMSH. It does not create direcly an .msh file. The geo file is human-readable, and still fully parametric as we will see.  
+:::
+
+## Features
+::: {.incremental}
+- Create a fully parametric structured mesh
+- It can deal with sharp and non-sharp trailing edges
+- Create physical gropus for the boundaries ("inlet", "outlet", "airfoil")
+- Import airfoil directly from `airfoiltools.com`
+- Boundary Layer analysis
+:::
+
+::: {.notes}
+But let's see how to use it. 
+:::
+
+## Usage
+Create CSV File
+```julia
+using AirfoilGmsh
+url = "https://m-selig.ae.illinois.edu/ads/coord/c141a.dat"
+filename = from_url_to_csv(url)
+```
+---
+Create the geofile
+```julia
+create_geofile(filename)
+```
+
+Custom options
+
+- Dimension (2D or 3D)
+- Element Type (TRI/ QUAD)
+- Reynolds number
+- First layer height
+
+## Boundary Layer
+
+
+
+::: {.notes}
+For viscous simulations
+:::

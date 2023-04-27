@@ -1,32 +1,33 @@
 ---
 title: "Synthetic Eddy Method"
 subtitle: "New Julia package for eddy generation"
+author: Carlo Brunelli
 format:
   revealjs: 
     slide-number: true
     chalkboard: 
       buttons: false
     preview-links: auto
-    css: styles.css
     footer: <https://github.com/carlodev/SyntheticEddyMethod.jl>
     logo: images/logos/logo_20.svg
     reference-location: margin
+    theme: [default, mytheme.scss]
+
 jupyter: julia-1.8
 execute:
   echo: true
 bibliography: references.bib
-title-slide-attributes:
-  data-background-image: images/logos/logo.png
-  data-background-size: 15%
-  data-background-position: 50% 75%
+code-block-border-left: true
+code-block-bg: true
+code-block-border-left: "#31BAE9"
 ---
 
 ## Who
 Carlo Brunelli, PhD Student at RMA
 
-![](/images/Brunelli_Carlo_ph.jpg){width=20%}
+![](/images/Brunelli_Carlo_ph.jpg){.absolute top=35% left=40% width=20%}
 
-![](/images/logos/RMA_nobg.png){width=10%}
+![ ](/images/logos/RMA_nobg.png){.absolute top=85% left=45% width=15%}
 
 <!-- ::: {.notes}
 Hello everyone, it is a pleasure to be at JuliaCon.
@@ -83,7 +84,9 @@ The SEM aims to recreate fluctuations which can be added to a mean velocity prof
 
 
 ## Usage
-Virtual Box Creation
+
+Here you can see the step for the virtual box creation
+
 ```{julia}
 using SyntheticEddyMethod
 σ = 0.1
@@ -94,7 +97,6 @@ z = collect(a:0.1:b)
 Vboxinfo = VirtualBox(y,z,σ)
 ```
 
-The Eddy creation is based on the use of shape function: tent, step or gaussian.
 
 ::: {.notes}
 But let's see how to use it. The user has to define sigma, the Eddis dimension, and the size of the inlet plane. You may notice that in the $x$ direction the extension is from -sigma to +sigma.
@@ -112,6 +114,7 @@ Each Eddy has a centre, here is the representation of some of them.
 :::
 
 ## Usage
+
 Providing the Reynolds stress tensor, eddy dimension, and the size of the domain.
 ```{julia}
 dt = 0.001
@@ -130,12 +133,14 @@ The new abstract Type Eddy has been introduces, and SemEddy is a concrete type. 
 
 
 ## Usage
+
 ```{julia}
 point = [0.0, 1.0, 2.5];
 ```
 
 
-Compute the velocity fluctuation.
+Compute the velocity fluctuation
+
 ```{julia}
 u_fluct = compute_fluct(point, dt, Eddies, U₀, Vboxinfo, Re_stress)
 ```
@@ -146,25 +151,26 @@ And finally we get the fluctutation.
 :::
 
 ## Validation
+
 Statistical validation
 
-::: {.r-stack}
-::: {.fragment .fade-in-then-out}
-![Turbulent spectra](/images/Spectra.png){width=130%}
-:::
+![Turbulent spectra](/images/Spectra.png){width=50%}
 
-::: {.fragment .fade-in-then-out}
+
+## Validation
 Mean value of the fluctuations is zero
 
 ![v' cumulated mean](/images/SEM_mean1.png){height=50%}
-:::
-::: {.fragment .fade-in-then-out}
+
+## Validation
+
 Autocorrelation properties
 
-![](/images/autocorr.png){width=70%}
-:::
-::: {.fragment .fade-in-then-out}
-Ability to create a quasi non-zero divergence free flow.
+![Autocorrelation of the fluctuations](/images/autocorr.png){width=70%}
+
+## Validation
+
+Ability to create a quasi non-zero divergence free flow
 
 ``` {=tex}
 \begin{equation}
@@ -172,13 +178,15 @@ Ability to create a quasi non-zero divergence free flow.
 \end{equation}
 ```
 
-![normalized divergence](/images/Div_free_plane.png){width="800"}
-:::
+![normalized divergence](/images/Div_free_plane.png){width=300}
 
-::: {.fragment .fade-in-then-out}
+
+
+## Validation
+
 Standard deviation of the fluctuation is the prescribed turbulence intensity
-:::
-:::
+
+
 
 ::: {.notes}
 The features of the package have been statistically validated. It creates a turbulent spectra, with the decay in the sub inertial reagion close to the well know -5/3 trend. Here we can see that the effort has produced the expected results, expecially in comparison with the random fluctuation which spectra is not realistic.
