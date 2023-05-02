@@ -13,3 +13,6 @@ Evaluations/
 /2023_Jcon/SEM/index_files
 /2023_Jcon/AirfoilGmsh/index1_files
 **/.vscode
+2023_05_VKI_Gridap/Tutorials
+*.vtu
+**/gif_ld
