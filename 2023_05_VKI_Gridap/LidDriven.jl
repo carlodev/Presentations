@@ -179,7 +179,7 @@ Rc(u) = ∇ ⋅ u;
 dRc(du) = ∇ ⋅ du;
 
 # ╔═╡ 2530fcc9-999b-4f2c-83ec-e85a4b322e00
-md"$\int_{\Omega} \dfrac{\partial u}{\partial t} \cdot v \ {\rm d}\Omega + \int_{\Omega} \nabla v \cdot \nabla u \ {\rm d}\Omega - \int_{\Omega} (\nabla\cdot v) \ p \ {\rm d}\Omega + \int_{\Omega} q \ (\nabla \cdot u) \ {\rm d}\Omega + \int_{\Omega} (u \cdot \nabla (u)) \cdot v \ {\rm d}\Omega - \int_{\Omega} h_f(t) \cdot v \ {\rm d}\Omega=0$"
+md"$\int_{\Omega} \dfrac{\partial u}{\partial t} \cdot v \ {\rm d}\Omega + \int_{\Omega} \nabla v \cdot \nabla u \ {\rm d}\Omega - \int_{\Omega} (\nabla\cdot v) \ p \ {\rm d}\Omega + \int_{\Omega} q \ (\nabla \cdot u) \ {\rm d}\Omega + \int_{\Omega} (u \cdot \nabla (u)) \cdot v \ {\rm d}\Omega - \int_{\Omega} h_f(t) \cdot v \ {\rm d}\Omega$"
 
 # ╔═╡ d8aacec3-185d-460d-a420-9836743fe28b
 var_eq(t, (u, p), (v, q)) = ∫(∂t(u) ⋅ v)dΩ + ∫((u ⋅ ∇(u)) ⋅ v)dΩ - ∫((∇ ⋅ v) * p)dΩ + ∫((q * (∇ ⋅ u)))dΩ + ν * ∫(∇(v) ⊙ ∇(u))dΩ - ∫(hf(t) ⋅ v)dΩ
@@ -223,6 +223,9 @@ md"$\tau_b = (u\cdot u)\tau$"
 # ╔═╡ 48794ce2-4170-4656-813b-0ea467c48d4a
 md"### Stabilization Equation"
 
+# ╔═╡ 2fca6f8e-fff0-4b8d-a06c-3094848f535c
+md"$\int_{\Omega} \tau \cdot (u \cdot \nabla (v) + \nabla(q) )R_m \ {\rm d}\Omega + \int_{\Omega} \tau_b \cdot ( \nabla \cdot v )R_c \ {\rm d}\Omega$"
+
 # ╔═╡ 1bf0ea91-ef29-4ae4-846c-68be6aabd39d
 stab_eq(t, (u, p), (v, q)) = ∫((τ ∘ (u, h) * (u ⋅ ∇(v) + ∇(q))) ⊙ Rm(t, (u, p))    +   τb ∘ (u, h) * (∇ ⋅ v) ⊙ Rc(u) )dΩ;
 
@@ -249,7 +252,6 @@ jac_t(t, (u, p), (dut, dpt), (v, q)) = ∫(dut ⋅ v)dΩ + ∫(τ ∘ (u, h) * (
 # ╔═╡ a8087ce4-5e24-4580-b23e-423b43f981fa
 op = TransientFEOperator(res_eq,jac,jac_t,X,Y);
 
-
 # ╔═╡ 51f1cd6a-56c4-4dd0-b711-c657da15d5f2
 md"## ODE settings"
 
@@ -274,23 +276,25 @@ ode_solver = ThetaMethod(nls_solver,dt,θ);
 # ╔═╡ 4042d424-462a-4fcf-9775-4c42877f5281
 sol_t = solve(ode_solver,op,xh0,t0,tF)
 
-# ╔═╡ 62b66814-40d9-4904-a5a4-377e2a464b89
-# ╠═╡ disabled = true
-#=╠═╡
-createpvd("lid_driven_transient_solution") do pvd
-  for (xh_tn,tn) in sol_t
-	 uh_tn, ph_tn =  xh_tn
-	f_name = ("LD_T_Results/lid_driven_transient_solution_$tn")
-    pvd[tn] = createvtk(Ω,f_name *".vtu", cellfields=["uh"=>uh_tn, "ph" => ph_tn ])
-  end
-end
-  ╠═╡ =#
+# ╔═╡ 4801f788-d95e-4823-a905-a1fb5716dda5
+# createpvd("lid_driven") do pvd
+#   for (xh_tn,tn) in sol_t
+# 	  uh_tn, ph_tn = xh_tn
+#     pvd[tn] = createvtk(Ω,"lid_driven_$tn"*".vtu",cellfields=["uh"=>uh_tn, 		"ph"=>ph_tn])
+#   end
+# end
 
 # ╔═╡ 5f83590e-cb04-4e8c-8b82-a8f103148184
 md"### View Results"
 
 # ╔═╡ 023ac790-ac48-4ccc-9c4d-1039a7b2b7ec
 @bind img_num Slider(0:500)
+
+# ╔═╡ f7173811-8c81-4203-a882-fb40bf2c1231
+time_img = img_num/100;
+
+# ╔═╡ 658c1775-e834-4642-b11a-0743c5f67048
+md"Time = $(time_img)"
 
 # ╔═╡ 546c6d05-c578-4d01-a1d8-06b08e49ac03
 img_ld = string(img_num, pad = 4);
@@ -306,25 +310,32 @@ md"## Using PETSc as solver"
 petsc_options = "-snes_type newtonls -snes_linesearch_type basic  -snes_linesearch_damping 1.0 -snes_rtol 1.0e-14 -snes_atol 0.0 -snes_monitor -pc_type asm -sub_pc_type lu  -ksp_type gmres -ksp_gmres_restart 30  -snes_converged_reason -ksp_converged_reason -ksp_error_if_not_converged true ";
 
 # ╔═╡ 685e6159-aab7-470e-8ec7-c4d2a9e94484
-#using GridapPETSc
+# using GridapPETSc
 
-# ╔═╡ f6b4f529-9801-4862-8dae-9bc95e9928e9
-# ╠═╡ disabled = true
-#=╠═╡
- GridapPETSc.with(args=split(petsc_options)) do
-	 petsc_nls_solver = NLSolver(show_trace=true, method=:newton);
-	 petsc_ode_solver = ThetaMethod(petsc_nls_solver,dt,θ);
-	 petsc_sol_t = solve(ode_solver,op,xh0,t0,tF)
-	 # createpvd("petsc_lid_driven_transient_solution") do pvd
-  for (xh_tn,tn) in petsc_sol_t
-	 uh_tn, ph_tn =  xh_tn
-	filepath = joinpath(@__DIR__, "LD_petsc_Results", "lid_driven_transient_solution_$tn")
-    pvd[tn] = createvtk(Ω,filepath *".vtu", cellfields=["uh"=>uh_tn, "ph" => ph_tn ])
-  end
-end
- end
+# ╔═╡ b9d3df4b-0b41-40e4-bf22-ae92308d6f8c
+#  GridapPETSc.with(args=split(petsc_options)) do
+#	  petsc_nls_solver = NLSolver(show_trace=true, method=:newton);
+#	  petsc_ode_solver = ThetaMethod(petsc_nls_solver,dt,θ);
+#	  petsc_sol_t = solve(petsc_ode_solver,op,xh0,t0,tF);
+#	 createpvd("lid_driven") do pvd
+#	   for (xh_tn,tn) in petsc_sol_t
+#	 	  uh_tn, ph_tn = xh_tn
+#	     pvd[tn] = createvtk(Ω,"lid_driven_$tn"*".vtu",cellfields=["uh"=>uh_tn, 			"ph"=>ph_tn])
+#	   end
+#	 end
+#  end
 
-  ╠═╡ =#
+# ╔═╡ 5dee9b22-3626-4431-8dc5-b2fdf5735c6e
+md"## Other features"
+
+# ╔═╡ fe9af44c-08ac-463d-93f9-43628a5b32c9
+md"
+- Alpha-method for ODE
+- Higher-order elements
+- Discontinuous Galerkin with interior penalty
+- Adjoint optimization
+- Uniform refinement
+"
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -341,7 +352,7 @@ PlutoUI = "7f904dfe-b85e-4ff6-b463-dae2292396a8"
 [compat]
 ColorVectorSpace = "~0.9.10"
 Colors = "~0.12.10"
-FileIO = "~1.16.0"
+FileIO = "~1.16.1"
 Gridap = "~0.17.17"
 GridapGmsh = "~0.6.1"
 ImageIO = "~0.6.6"
@@ -355,7 +366,7 @@ PLUTO_MANIFEST_TOML_CONTENTS = """
 
 julia_version = "1.8.2"
 manifest_format = "2.0"
-project_hash = "c2131eb65efdd3c11a378aa5b410333c778bd52f"
+project_hash = "ebe4321d632bb172a0bc1872ec9bb844a8bf1cd5"
 
 [[deps.AbstractFFTs]]
 deps = ["ChainRulesCore", "LinearAlgebra"]
@@ -597,9 +608,9 @@ version = "0.4.9"
 
 [[deps.FileIO]]
 deps = ["Pkg", "Requires", "UUIDs"]
-git-tree-sha1 = "7be5f99f7d15578798f338f5433b6c432ea8037b"
+git-tree-sha1 = "299dc33549f68299137e51e6d49a13b5b1da9673"
 uuid = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
-version = "1.16.0"
+version = "1.16.1"
 
 [[deps.FileWatching]]
 uuid = "7b1f6079-737a-58dc-b8bc-7a2ca5c1b5ee"
@@ -1557,7 +1568,7 @@ version = "17.4.0+0"
 # ╟─da5c3cda-3523-4d83-8f60-82a44ab06a54
 # ╠═17a5be39-9ce7-426f-825c-dfd810bd17bc
 # ╠═44d643c6-c303-48c6-895e-07d719b8b6ba
-# ╠═dbf207a0-eab8-49ed-95bb-be8ff29d45fd
+# ╟─dbf207a0-eab8-49ed-95bb-be8ff29d45fd
 # ╠═cb8f0374-a55d-4a24-a1fd-74d05982cb4e
 # ╠═095063fd-a9f4-4589-bb6a-20bd9c70f75b
 # ╟─a94f53a0-22dd-4f2e-aea5-fc0b5aab4bba
@@ -1590,6 +1601,7 @@ version = "17.4.0+0"
 # ╟─f6641a82-d4cc-4bf2-964f-6a83cf564088
 # ╠═d11e8e57-1150-41ac-bf9f-c5aee7b3ca95
 # ╟─48794ce2-4170-4656-813b-0ea467c48d4a
+# ╟─2fca6f8e-fff0-4b8d-a06c-3094848f535c
 # ╠═1bf0ea91-ef29-4ae4-846c-68be6aabd39d
 # ╠═9d1e576d-7f0c-4dd9-b30a-9db149053a2d
 # ╟─5a9a7f9f-fb30-4927-8f2d-303d35af962c
@@ -1604,14 +1616,18 @@ version = "17.4.0+0"
 # ╠═0452746a-aa0f-412c-b53c-0be9b9309b57
 # ╠═0bf5c0bb-ae03-4d79-bc39-384c87518a33
 # ╠═4042d424-462a-4fcf-9775-4c42877f5281
-# ╠═62b66814-40d9-4904-a5a4-377e2a464b89
+# ╠═4801f788-d95e-4823-a905-a1fb5716dda5
 # ╟─5f83590e-cb04-4e8c-8b82-a8f103148184
 # ╟─023ac790-ac48-4ccc-9c4d-1039a7b2b7ec
+# ╟─f7173811-8c81-4203-a882-fb40bf2c1231
+# ╟─658c1775-e834-4642-b11a-0743c5f67048
 # ╟─546c6d05-c578-4d01-a1d8-06b08e49ac03
 # ╟─e8448c2a-eba7-4230-a22b-6c686acc3d3a
 # ╟─3001b6ec-ac30-4b4d-9b67-7fc110cf65d3
 # ╠═afa520f6-b849-462c-8684-f7f36061423e
 # ╠═685e6159-aab7-470e-8ec7-c4d2a9e94484
-# ╠═f6b4f529-9801-4862-8dae-9bc95e9928e9
+# ╠═b9d3df4b-0b41-40e4-bf22-ae92308d6f8c
+# ╟─5dee9b22-3626-4431-8dc5-b2fdf5735c6e
+# ╟─fe9af44c-08ac-463d-93f9-43628a5b32c9
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002
