@@ -23,7 +23,7 @@ md"# Gridap: introduction for FluidDynamics"
 md"## About Gridap"
 
 # ╔═╡ a004b390-4461-4b1a-970c-c18ffda6d547
-md"offical [Gridap](https://github.com/gridap/Gridap.jl) repository
+md"Project started in 2020, offical [Gridap](https://github.com/gridap/Gridap.jl) repository
 
 What:
 - Written in Julia
@@ -86,14 +86,14 @@ md"Find $u\in U_h \text{ such that }  a(u,v) = b(v)  \text{ for all } v\in V_h$"
 # ╔═╡ c7b88c36-be72-42e7-bcb4-87783bd3b65e
 md"where $a(u,v) \doteq \int_{\Omega} \nabla v \cdot \nabla u \ {\rm d}\Omega, \quad b(v) \doteq \int_{\Omega} v\ f  \ {\rm  d}\Omega + \int_{\Gamma_{\rm N}} v\ h \ {\rm d}\Gamma_{\rm N}$"
 
-# ╔═╡ 27428a8d-8e4c-473f-bcf6-3cb08d4c2778
-load( joinpath(@__DIR__, "images", "model-poisson.png"))
-
 # ╔═╡ 7fa39b65-d3ac-4557-aebe-f2e4a2d27fee
 msh_file = joinpath(@__DIR__, "models", "toy_model.msh")
 
 # ╔═╡ 72243140-e963-48c4-bbaf-9e2d92b83a1c
 model = GmshDiscreteModel(msh_file)
+
+# ╔═╡ 27428a8d-8e4c-473f-bcf6-3cb08d4c2778
+load( joinpath(@__DIR__, "images", "model-poisson.png"))
 
 # ╔═╡ 9e12cfb0-b84d-4f14-9ffc-bbaba51a3606
 writevtk(model, "toy_model");
@@ -117,7 +117,7 @@ neumanntags = ["circle", "triangle", "square"];
 Γ = BoundaryTriangulation(model,tags=neumanntags);
 
 # ╔═╡ 2edd50b9-518f-443b-8c60-3d3ecc323720
-md"Set up to perform the integrals in the weak form numerically"
+md"Set up to perform the integrals in the weak form numerically. Define integration mesh, plus a Gauss-like quadrature in each of the cells in the triangulation"
 
 # ╔═╡ eebaf6a0-2ceb-43fc-a11b-6879c8e90a47
 degree = 2;
@@ -169,9 +169,6 @@ uh = solve(solver,op);
 
 # ╔═╡ 7c159acc-ef89-4c33-b2ed-d9d19b0c8318
 writevtk(Ω, "Poisson", cellfields = ["uh" => uh]);
-
-# ╔═╡ 15db30cf-14f3-4ed6-a2f4-718158bc2294
-
 
 # ╔═╡ 00000000-0000-0000-0000-000000000001
 PLUTO_PROJECT_TOML_CONTENTS = """
@@ -1439,6 +1436,5 @@ version = "17.4.0+0"
 # ╠═01d95ac4-9e6c-4822-aa9e-a7bd581399bd
 # ╠═ea581a75-eca7-47c0-8c6f-31f546e96fe0
 # ╠═7c159acc-ef89-4c33-b2ed-d9d19b0c8318
-# ╠═15db30cf-14f3-4ed6-a2f4-718158bc2294
 # ╟─00000000-0000-0000-0000-000000000001
 # ╟─00000000-0000-0000-0000-000000000002

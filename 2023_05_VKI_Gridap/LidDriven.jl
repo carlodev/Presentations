@@ -81,6 +81,10 @@ begin
 
 end	
 
+# ╔═╡ 589c08e9-9f7d-46f1-8e19-cba7c4cca68d
+load(joinpath(@__DIR__, "images", "bc_liddriven.png"))
+
+
 # ╔═╡ 095063fd-a9f4-4589-bb6a-20bd9c70f75b
 ν = u_in*2*L/Re
 
@@ -291,7 +295,7 @@ md"### View Results"
 @bind img_num Slider(0:500)
 
 # ╔═╡ f7173811-8c81-4203-a882-fb40bf2c1231
-time_img = img_num/100;
+time_img = img_num/100 ;
 
 # ╔═╡ 658c1775-e834-4642-b11a-0743c5f67048
 md"Time = $(time_img)"
@@ -1570,6 +1574,7 @@ version = "17.4.0+0"
 # ╠═44d643c6-c303-48c6-895e-07d719b8b6ba
 # ╟─dbf207a0-eab8-49ed-95bb-be8ff29d45fd
 # ╠═cb8f0374-a55d-4a24-a1fd-74d05982cb4e
+# ╟─589c08e9-9f7d-46f1-8e19-cba7c4cca68d
 # ╠═095063fd-a9f4-4589-bb6a-20bd9c70f75b
 # ╟─a94f53a0-22dd-4f2e-aea5-fc0b5aab4bba
 # ╠═d9726987-3b88-4962-9797-e2f6f1126192
