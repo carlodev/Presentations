@@ -17,15 +17,37 @@ using Gridap
 using GridapGmsh
 
 # ╔═╡ 221b9690-e8c8-11ed-1ec4-c7c9218c19a8
-md"# Gridap introduction for FluidDynamics" 
+md"# Gridap: introduction for FluidDynamics" 
+
+# ╔═╡ 30237314-005e-4a74-b4a4-79bc578b22f3
+md"## About Gridap"
 
 # ╔═╡ a004b390-4461-4b1a-970c-c18ffda6d547
-md"Features:
-- Provides a set of tools for solving PDEs
+md"offical [Gridap](https://github.com/gridap/Gridap.jl) repository
+
+What:
 - Written in Julia
+- Provides a set of tools for solving PDEs
+- FEM framework
 - Almost 1:1 mathematical notation
-- Support for: MPI, PETSc, Gmsh (mesh) 
-offical [Gridap](https://github.com/gridap/Gridap.jl) repository
+Support for:
+- MPI, [GridapDistributed](https://github.com/gridap/GridapDistributed.jl)
+- PETSc, [GridapPETSc](https://github.com/gridap/GridapPETSc.jl)
+- Pardiso, [GridapPardiso](https://github.com/gridap/GridapPardiso.jl)
+- Gmsh, [GridapGmsh](https://github.com/gridap/GridapGmsh.jl)
+
+Features:
+- MultiField problems
+- Time depended
+- Discontinuous Galerkin
+- Raviart Thomas elements
+"
+
+# ╔═╡ 05abda62-98a2-4e21-a80b-6e746072b29d
+md"## WorkFlow:
+1. Mesh creation with Gmsh
+2. Julia-MPI-Gridap
+3. Open the results in [Paraview](https://www.paraview.org/)
 "
 
 # ╔═╡ 159511bf-81a4-42bd-a333-5be063703781
@@ -46,7 +68,7 @@ u = g \ &\text{on}\ \Gamma_{\rm D},\\
 
 
 # ╔═╡ 9e19cfe5-ee65-4909-86f0-63760060f975
-md"We choose $f(x) = 1$, $g(x) = 2$, $h(x)=3$ and $u_{\rm o}(x) = 1$"
+md"We choose $f(x) = 1$, $g(x) = 2$, $h(x)=3$"
 
 
 # ╔═╡ 5cb94d86-befc-4602-a1f0-625e06b07ee5
@@ -112,8 +134,14 @@ dΩ = Measure(Ω,degree);
 # ╔═╡ 811528ea-31ff-457e-9fe5-c88f997a020d
 md"Weak form"
 
+# ╔═╡ fe8cc566-1dd1-458c-889d-b0f71cacdf19
+md"$a(u,v) \doteq \int_{\Omega} \nabla v \cdot \nabla u \ {\rm d}\Omega$"
+
 # ╔═╡ 86602057-6a1c-4009-aa79-0425f75a0c92
 a(u,v) = ∫(∇(u)⋅∇(v))dΩ ;
+
+# ╔═╡ cd3b6370-b686-49e6-932b-f617e9f72e6a
+md"$b(v) \doteq \int_{\Omega} v\ f  \ {\rm  d}\Omega + \int_{\Gamma_{\rm N}} v\ h \ {\rm d}\Gamma_{\rm N}$"
 
 # ╔═╡ e0937916-8dcf-462a-9fd4-53490be09820
 b(v) = ∫( v*f )*dΩ + ∫( v*h )*dΓ ;
@@ -1369,7 +1397,9 @@ version = "17.4.0+0"
 # ╔═╡ Cell order:
 # ╟─ba4bd558-742a-4379-888d-d75928aec852
 # ╟─221b9690-e8c8-11ed-1ec4-c7c9218c19a8
+# ╟─30237314-005e-4a74-b4a4-79bc578b22f3
 # ╟─a004b390-4461-4b1a-970c-c18ffda6d547
+# ╟─05abda62-98a2-4e21-a80b-6e746072b29d
 # ╟─159511bf-81a4-42bd-a333-5be063703781
 # ╟─4e023e5e-e5b2-4e58-b062-b2c7c961873b
 # ╟─ebfacadf-2789-4739-bcb2-06e52ece488a
@@ -1382,10 +1412,10 @@ version = "17.4.0+0"
 # ╟─c7b88c36-be72-42e7-bcb4-87783bd3b65e
 # ╠═b5e6194c-464e-4d07-9b86-557d8826fb09
 # ╠═5be274f5-eba8-4c10-99b1-619f557fce07
-# ╟─27428a8d-8e4c-473f-bcf6-3cb08d4c2778
 # ╠═7fa39b65-d3ac-4557-aebe-f2e4a2d27fee
 # ╠═72243140-e963-48c4-bbaf-9e2d92b83a1c
-# ╠═9e12cfb0-b84d-4f14-9ffc-bbaba51a3606
+# ╟─27428a8d-8e4c-473f-bcf6-3cb08d4c2778
+# ╟─9e12cfb0-b84d-4f14-9ffc-bbaba51a3606
 # ╠═3c2184cf-80fc-4656-9ee7-eb8da3ae7477
 # ╠═bd54af32-75d2-4dcb-9313-0252b8268105
 # ╠═56787682-b1d9-4923-8296-d2ae5470c1d2
@@ -1398,10 +1428,12 @@ version = "17.4.0+0"
 # ╠═deee0ea2-6a9c-4859-9090-74abb4879e82
 # ╠═a0ec2d3b-08e7-4d42-abfc-3d0ed6224ffc
 # ╟─811528ea-31ff-457e-9fe5-c88f997a020d
+# ╟─fe8cc566-1dd1-458c-889d-b0f71cacdf19
 # ╠═86602057-6a1c-4009-aa79-0425f75a0c92
+# ╟─cd3b6370-b686-49e6-932b-f617e9f72e6a
 # ╠═e0937916-8dcf-462a-9fd4-53490be09820
 # ╠═a5fa2461-c0ea-4efe-9d55-0da0847375a7
-# ╠═0beac17f-0cb0-4573-ac6d-29923ac9ac97
+# ╟─0beac17f-0cb0-4573-ac6d-29923ac9ac97
 # ╠═93fbe14f-303e-489a-a435-53e322206910
 # ╟─791cd2be-2534-4adb-b4b5-7352dcd9acd8
 # ╠═01d95ac4-9e6c-4822-aa9e-a7bd581399bd
