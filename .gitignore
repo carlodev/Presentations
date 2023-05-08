@@ -16,3 +16,5 @@ Evaluations/
 2023_05_VKI_Gridap/Tutorials
 *.vtu
 **/gif_ld
+*.pvd
+*.gitignore
