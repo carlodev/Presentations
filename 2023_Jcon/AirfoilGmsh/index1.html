@@ -395,13 +395,10 @@
   <p class="author">Carlo Brunelli</p>
 </section>
 
-<section id="who" class="slide level2">
-<h2>Who</h2>
-<p>Carlo Brunelli, PhD Student at RMA</p>
-<p><img data-src="/images/Brunelli_Carlo_ph.jpg" class="absolute" style="top: 35%; left: 40%; width: 20%; "></p>
-<p><img data-src="/images/logos/RMA_nobg.png" class="absolute" style="top: 85%; left: 45%; width: 15%; "></p>
+<section class="slide level2">
+
 <aside class="notes">
-<p>Hello everyone, it is a pleasure to be at JuliaCon. Welcome to the presentation of a new Julia pakcage: AirfoilGmsh, in which I have been working on</p>
+<p>Hello everyone, it is a pleasure to be at JuliaCon. Welcome to the presentation of AirfoilGmsh, thank you for joining me today. My name is Carlo Brunelli, and I am here to present you a new package containing a series of tools I hope can be useful for reaserchers and engineers dealing with airfoil and meshes.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -420,7 +417,7 @@
 <ul>
 <li class="fragment">Automatization of structured mesh for airfoils</li>
 <li class="fragment">Avoiding routine operations</li>
-<li class="fragment">Creates .geo file</li>
+<li class="fragment">Creates .geo file for GMSH</li>
 </ul>
 </div>
 <div class="columns">
@@ -455,7 +452,7 @@
 </div>
 </div>
 <aside class="notes">
-<p>I would like to start saying why I started developing this tool. I found myself testing different airfoils. I found myself spending most of the time in meshing-routine operations, using GMSH meshers. For who does not know, it is a free open source meshers. So I hope this can save you some time. It creates .geo file, which are read by GMSH. It does not create direcly an .msh file. The geo file is human-readable, and still fully parametric as we will see.</p>
+<p>Before we delve into our solution, let’s address the problem at hand. Traditionally, creating airfoil meshes has been a time-consuming and manual process, often requiring expertise in various software tools. Personally, I found myself testing different airfoils and spending most of the time in meshing-routine operations, so I recognize an opportunity of automatization. Leveraging the capabilities of the Julia, the package aims simplifies the entire process. It generates GEO files that are directly compatible with Gmsh, reducing the manual intervention required from users. Gmsh is a free open source software for meshing. It does not create direcly an .msh file. The geo file is human-readable, and still fully parametric as we will see.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -470,17 +467,58 @@
 </section>
 <section id="features" class="slide level2">
 <h2>Features</h2>
-<div>
+<!-- ::: {.incremental} -->
 <ul>
-<li class="fragment">Create a fully parametric structured mesh</li>
-<li class="fragment">It can deal with sharp and non-sharp trailing edges</li>
-<li class="fragment">Create physical gropus for the boundaries (“inlet”, “outlet”, “airfoil”)</li>
-<li class="fragment">Import airfoil directly from <code>airfoiltools.com</code></li>
-<li class="fragment">Boundary Layer analysis</li>
+<li>Create a fully parametric structured mesh</li>
+<li>Triangular or quadrangular elements</li>
 </ul>
-</div>
+<p><img data-src="/images/Quad.png" style="width:45.0%"> <img data-src="/images/Tri.png" style="width:45.0%"></p>
 <aside class="notes">
-<p>But let’s see how to use it.</p>
+<p>Here a list of feature and functionality which are supported at the moment. It creates a fully parametric structured mesh, where the AoA, domain dimension and number of divisions can be easily modified.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="features-1" class="slide level2">
+<h2>Features</h2>
+<ul>
+<li>It can deal with sharp and non-sharp trailing edges <img data-src="/images/Non_Sharp.png" style="width:45.0%" alt="Non sharp trailing edge"> <img data-src="/images/Sharp.png" style="width:45.0%" alt="Sharp trailing edge"></li>
+</ul>
+<aside class="notes">
+<p>It recognize if the trailing edge is sharp or not</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="features-2" class="slide level2">
+<h2>Features</h2>
+<ul>
+<li>Create 2D or 3D mesh</li>
+<li>Create physical gropus for the boundaries (“inlet”, “outlet”, “airfoil”)</li>
+<li>Import airfoil directly from <code>airfoiltools.com</code></li>
+<li>Boundary Layer analysis</li>
+<li>Class Shape Transformation supports <!-- ::: --></li>
+</ul>
+<aside class="notes">
+<p>It automatically creates tags for the boundaries It is possible to create a .csv directly from an url obtained from airfoiltools, a database of airfoil</p>
+<p>It can also perform a boundary layer analysis and supports the class shape tranformation</p>
+<p>but let’s see how to use it</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -499,23 +537,81 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">using</span> <span class="bu">AirfoilGmsh</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a>url <span class="op">=</span> <span class="st">"https://m-selig.ae.illinois.edu/ads/coord/c141a.dat"</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a>filename <span class="op">=</span> <span class="fu">from_url_to_csv</span>(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section class="slide level2">
-
 <p>Create the geofile</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">create_geofile</span>(filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Custom options</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1"></a><span class="im">using</span> <span class="bu">AirfoilGmsh</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>filename <span class="op">=</span> <span class="st">"c141a.csv"</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">create_geofile</span>(filename);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>The usage of the package is extremely simple and straightforward. The user can for example naviagate on aifoiltools.com and find the profile of interest and copy the url, like in the example, and it creates a .csv file.</p>
+<p>Then the creation of geofile is immediate. The code recognize the leading and trailing edge, and treats differently sharp and not-sharp traling edges.</p>
+<p>It is possible to specify different keywords argument.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="options" class="slide level2">
+<h2>Options</h2>
 <ul>
 <li>Dimension (2D or 3D)</li>
 <li>Element Type (TRI/ QUAD)</li>
 <li>Reynolds number</li>
-<li>First layer height</li>
+<li>First layer height ::: {.notes} It supports the creation of 2D and 3D mesh. For 3D mesh in the span direction periodic boundary conditions are imposed.</li>
 </ul>
+<p>The cells can be triangular or quadrangular.</p>
+<p>For viscous simulations it is fundamental to correctly capture the boundary layer, which strongly depends on the Reynolds.</p>
 </section>
-<section id="boundary-layer" class="slide level2">
-<h2>Boundary Layer</h2>
+<section id="boundary-layer-analysis" class="slide level2">
+<h2>Boundary Layer Analysis</h2>
+
+<img data-src="/images/FlowChart.png" style="width:85.0%" class="r-stretch"><aside class="notes">
+<p>Providing the Reynolds number or the height of the first layer, with built-in algorithms and iterative routine it aims to create a proper boundary layer, targeting an adequate y+ and guarantee enough cells in the BL.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="class-shape-transformation" class="slide level2">
+<h2>Class Shape Transformation</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource julia number-lines code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1"></a>filename <span class="op">=</span> <span class="st">"e1098.csv"</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>Npoints <span class="op">=</span> <span class="fl">500</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>x,y,_,_ <span class="op">=</span> <span class="fu">increase_resolution_airfoil</span>(filename,Npoints)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="/images/cst_enanching.png" style="width:60.0%" class="r-stretch quarto-figure-center"><p class="caption">CST example</p><aside class="notes">
+<p>To enhance airfoil resolution and provide flexibility in meshing, AirfoilGmsh incorporates class shape transformation feature. This allows users to increase the resolution of the airfoil mesh by adjusting specific parameters, thereby improving accuracy and capturing finer details.</p>
+<p>Providing the airfoil file coordinates it exploits the CST method to provide the same airfoil but defined in more points. It solves a minimization problem internally, it can take a while (some minutes).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="conclusion" class="slide level2">
+<h2>Conclusion</h2>
+<p>Optional steps: a. Create .csv file from airfoiltools link b. Improve .csv resolution with CST support</p>
+<p>Create Mesh 1. Provide .csv file to AirfoilGmsh and set up the options 2. Open the .geo file with GMSH 3. Modify the mesh and geometry 4. Export the mesh</p>
 <aside class="notes">
-<p>For viscous simulations</p>
+<p>In conclusion, the workflow for meshing generation is preatty straight-forward, and it is summed up here. You can find further details on usage and implementatation in the package documentation. Thank you for your attention. I hope you found this presentation informative and insightful. If you have any questions or would like to discuss SmartMeshers further, please feel free to reach out.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
