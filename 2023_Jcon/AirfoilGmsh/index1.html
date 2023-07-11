@@ -395,24 +395,13 @@
   <p class="author">Carlo Brunelli</p>
 </section>
 
-<section class="slide level2">
-
-<aside class="notes">
-<p>Hello everyone, it is a pleasure to be at JuliaCon. Welcome to the presentation of AirfoilGmsh, thank you for joining me today. My name is Carlo Brunelli, and I am here to present you a new package containing a series of tools I hope can be useful for reaserchers and engineers dealing with airfoil and meshes.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
 <section id="why-airfoilgmsh" class="slide level2 smaller">
 <h2>Why AirfoilGmsh?</h2>
+<!-- ::: {.notes}
+Hello everyone, it is a pleasure to be at JuliaCon. 
+Welcome to the presentation of AirfoilGmsh,  thank you for joining me today. My name is Carlo Brunelli, and I am here to present you a new package containing
+a series of tools I hope can be useful for reaserchers and engineers dealing with airfoil and meshes. 
+::: -->
 <div>
 <ul>
 <li class="fragment">Automatization of structured mesh for airfoils</li>
@@ -452,7 +441,7 @@
 </div>
 </div>
 <aside class="notes">
-<p>Before we delve into our solution, let’s address the problem at hand. Traditionally, creating airfoil meshes has been a time-consuming and manual process, often requiring expertise in various software tools. Personally, I found myself testing different airfoils and spending most of the time in meshing-routine operations, so I recognize an opportunity of automatization. Leveraging the capabilities of the Julia, the package aims simplifies the entire process. It generates GEO files that are directly compatible with Gmsh, reducing the manual intervention required from users. Gmsh is a free open source software for meshing. It does not create direcly an .msh file. The geo file is human-readable, and still fully parametric as we will see.</p>
+<p>Before we delve into our solution, let’s address the problem at hand. Traditionally, creating airfoil meshes has been a time-consuming and manual process, often requiring expertise in various software tools. Personally, I found myself testing different airfoils and spending most of the time in meshing-routine operations, so I recognize an opportunity of automatization. Leveraging the capabilities of the Julia, the package aims simplifies the entire process. It generates GEO files that are directly compatible with Gmsh, reducing the manual intervention required from users. Gmsh is a free open source software for meshing. AirfoilGmsh provides automation, seamless integration with Gmsh It does not create direcly an .msh file. The geo file is human-readable, and still fully parametric as we will see.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -543,7 +532,8 @@
 <span id="cb4-3"><a href="#cb4-3"></a><span class="fu">create_geofile</span>(filename);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>The usage of the package is extremely simple and straightforward. The user can for example naviagate on aifoiltools.com and find the profile of interest and copy the url, like in the example, and it creates a .csv file.</p>
-<p>Then the creation of geofile is immediate. The code recognize the leading and trailing edge, and treats differently sharp and not-sharp traling edges.</p>
+<p>Then the creation of geofile is immediate.</p>
+<p>The code recognize the leading and trailing edge, and treats differently sharp and not-sharp traling edges.</p>
 <p>It is possible to specify different keywords argument.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -563,10 +553,23 @@
 <li>Dimension (2D or 3D)</li>
 <li>Element Type (TRI/ QUAD)</li>
 <li>Reynolds number</li>
-<li>First layer height ::: {.notes} It supports the creation of 2D and 3D mesh. For 3D mesh in the span direction periodic boundary conditions are imposed.</li>
+<li>First layer height</li>
 </ul>
+<aside class="notes">
+<p>It supports the creation of 2D and 3D mesh. For 3D mesh in the span direction periodic boundary conditions are imposed.</p>
 <p>The cells can be triangular or quadrangular.</p>
 <p>For viscous simulations it is fundamental to correctly capture the boundary layer, which strongly depends on the Reynolds.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="boundary-layer-analysis" class="slide level2">
 <h2>Boundary Layer Analysis</h2>
@@ -608,10 +611,20 @@
 </section>
 <section id="conclusion" class="slide level2">
 <h2>Conclusion</h2>
-<p>Optional steps: a. Create .csv file from airfoiltools link b. Improve .csv resolution with CST support</p>
-<p>Create Mesh 1. Provide .csv file to AirfoilGmsh and set up the options 2. Open the .geo file with GMSH 3. Modify the mesh and geometry 4. Export the mesh</p>
+<p>Optional steps:</p>
+<ol type="a">
+<li><p>Create .csv file from airfoiltools link</p></li>
+<li><p>Improve .csv resolution with CST support</p></li>
+</ol>
+<p>Create Mesh</p>
+<ol type="1">
+<li><p>Provide .csv file to AirfoilGmsh and set up the options</p></li>
+<li><p>Open the .geo file with GMSH</p></li>
+<li><p>Modify the mesh and geometry</p></li>
+<li><p>Export the mesh</p></li>
+</ol>
 <aside class="notes">
-<p>In conclusion, the workflow for meshing generation is preatty straight-forward, and it is summed up here. You can find further details on usage and implementatation in the package documentation. Thank you for your attention. I hope you found this presentation informative and insightful. If you have any questions or would like to discuss SmartMeshers further, please feel free to reach out.</p>
+<p>In conclusion, the workflow for meshing generation is preatty straight-forward, and it is summed up here. You can find further details on usage and implementatation in the package documentation. Thank you for your attention. I hope you found this presentation informative and insightful. If you have any questions or would like to discuss AirfoilGmsh further, please feel free to reach out.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;

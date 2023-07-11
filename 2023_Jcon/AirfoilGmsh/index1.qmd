@@ -18,16 +18,15 @@ execute:
 code-block-border-left: true
 code-block-bg: true
 code-block-border-left: "#31BAE9"
+
 ---
-::: {.notes}
+
+## Why AirfoilGmsh? {.smaller}
+<!-- ::: {.notes}
 Hello everyone, it is a pleasure to be at JuliaCon. 
 Welcome to the presentation of AirfoilGmsh,  thank you for joining me today. My name is Carlo Brunelli, and I am here to present you a new package containing
 a series of tools I hope can be useful for reaserchers and engineers dealing with airfoil and meshes. 
-:::
-
-
-## Why AirfoilGmsh? {.smaller}
-
+::: -->
 ::: {.incremental}
 - Automatization of structured mesh for airfoils
 - Avoiding routine operations
@@ -84,6 +83,7 @@ Personally, I found myself testing different airfoils and spending most of the t
 Leveraging the capabilities of the Julia, the package aims simplifies the entire process.
 It generates GEO files that are directly compatible with Gmsh, reducing the manual intervention required from users.
 Gmsh is a free open source software for meshing.
+AirfoilGmsh provides automation, seamless integration with Gmsh
 It does not create direcly an .msh file. The geo file is human-readable, and still fully parametric as we will see.  
 :::
 
@@ -147,6 +147,7 @@ The usage of the package is extremely simple and straightforward.
 The user can for example naviagate on aifoiltools.com and find the profile of interest and copy the url, like in the example, and it creates a .csv file. 
 
 Then the creation of geofile is immediate.
+
 The code recognize the leading and trailing edge, and treats differently sharp and not-sharp traling edges.
 
 It is possible to specify different keywords argument.
@@ -158,12 +159,14 @@ It is possible to specify different keywords argument.
 - Element Type (TRI/ QUAD)
 - Reynolds number
 - First layer height
+
 ::: {.notes}
 It supports the creation of 2D and 3D mesh. For 3D mesh in the span direction periodic boundary conditions are imposed.
 
 The cells can be triangular or quadrangular.
 
 For viscous simulations it is fundamental to correctly capture the boundary layer, which strongly depends on the Reynolds.
+:::
 
 ## Boundary Layer Analysis
 ![](/images/FlowChart.png){width=85%}
@@ -192,17 +195,24 @@ Providing the airfoil file coordinates it exploits the CST method to provide the
 
 ## Conclusion
 Optional steps:
+
 a. Create .csv file from airfoiltools link
+
 b. Improve .csv resolution with CST support
 
+
 Create Mesh
+
 1. Provide .csv file to AirfoilGmsh and set up the options
+
 2. Open the .geo file with GMSH
+
 3. Modify the mesh and geometry
+
 4. Export the mesh
 
 
 ::: {.notes}
-In conclusion, the workflow for meshing generation is preatty straight-forward, and it is summed up here. You can find further details on usage and implementatation in the package documentation.
-Thank you for your attention. I hope you found this presentation informative and insightful. If you have any questions or would like to discuss SmartMeshers further, please feel free to reach out.
+In conclusion, the workflow for meshing generation is preatty straight-forward, and it is summed up here. You can find further details on usage and implementatation in the package documentation. 
+Thank you for your attention. I hope you found this presentation informative and insightful. If you have any questions or would like to discuss AirfoilGmsh further, please feel free to reach out.
 :::
