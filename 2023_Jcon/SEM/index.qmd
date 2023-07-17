@@ -25,35 +25,51 @@ code-block-border-left: "#31BAE9"
 ## Why SyntheticEddyMethod?
 <!-- ::: {.notes}
 Hello everyone, it is a pleasure to be at JuliaCon. 
-Welcome to the presentation of SyntheticEddyMethod, thank you for joining me today. My name is Carlo Brunelli, I work as a reasercher at the RMA in Brussels, and I am here to show you a new package, which aims to do one simple thing: recreate realistic turbulent fluctuations, especially for Large Eddy Simulations (LES).
+Welcome to the presentation of SyntheticEddyMethod, thank you for joining me today. My name is Carlo Brunelli, I work as a reasercher at the RMA in Brussels, and I am here to show you a new package and how to use it. 
 ::: -->
 ::: {layout-ncol=2}
 ### Goal
-- Creation of realistic turbulent fluctuations for Fluid Dynamic simulations
+- Create realistic turbulent fluctuations for Fluid Dynamic simulations
 
 ### Context:
 - Prediction of transition and separation points
-- Turbulence unsteady effects
+- Turbulent unsteady effects
 :::
 
 
 ![LES airfoil sd7003, vorticity contour](/images/uh_Z.png){width=80%}
 
 ::: {.notes}
-In the field of fluid mechanics for high fidelity simulations, has arisen the need of creating turbulent intial or inlet conditions. For example when simulating the flow over an airfoil, the flow physical features are strongly dependent on the boundary conditions, and expecially the turbulence intensity. It is crucial for studying transition and separation phenomena. The package helps turbulence modeling by recreating numerically realistic turbulent fluctuations. 
+SEM aims to do one simple thing: recreate realistic turbulent fluctuations, especially for Large Eddy Simulations (LES).
+In the field of fluid mechanics for high fidelity simulations, has arisen the need of creating proper turbulent intial or inlet conditions. For example, when simulating the flow over an airfoil, the flow physical features are strongly dependent on the boundary conditions, and expecially the turbulence intensity. It is crucial for studying transition and separation phenomena. The package helps turbulence modeling by recreating numerically realistic turbulent fluctuations. 
+:::
+
+## Turbulence
+![LES airfoil sd7003, streamlines](/images/sd7003.mp4){width=80%}
+
+{{< video /images/sd7003.mp4 width="100%" height="85%" >}}
+
+- Fluctuations
+- Unsteady
+- Caothic
+- Tridimensional
+
+::: {.notes}
+Turbulence it is characterized by irregular fluctuations in velocity, pressure, and other flow properties. Turbulent flows are characterized by the presence of vortices, eddies, and rapid variations in flow direction and speed. It occurs when the fluid flow becomes unstable and from a smooth and ordered state becomes a caothic. Understanding and modeling turbulence is crucial in many fields of science and engineering.
 :::
 
 ## Features
 ::: {.incremental}
 - Creation of Synthetic Eddies, @Jarrin2006
-- Chose between different shape functions
+- Choose between different shape functions
 - Impose the Reynolds stress (globally or locally) / Turbulence Intensity
 - Divergence-free constraint, @Poletto2013
-- It can be coupled with a fludid dynamic code solver, or used stand-alone and save the produced results which can be then read by the code
+- It can be coupled with a fluid dynamic code solver, or used stand-alone and save the produced results which can be then read by the code
 :::
 
 ::: {.notes}
-At the moment, the method of creating synthetic eddy established by Jarrin has been implemented. And it allows the user to chose between different shape functions (gaussian, tent or step). One of the key feature is its ability to reproduce specified Reynolds stress. This feature allows users to control and manipulate turbulence intensity in a targeted manner, enabling them to try to match experimental data or achieve desired turbulence characteristics.
+The method of creating synthetic eddy established by Jarrin has been implemented. 
+The user can chose between different shape functions (gaussian, tent or step). One of the key feature is its ability to reproduce specified Reynolds stress. This feature allows users to control and manipulate turbulence intensity in a targeted manner, enabling them to try to match experimental data or achieve desired turbulence characteristics.
 It is also possible to import a spreasheet where different stress tensor are defined in different points of the domain (for example fora wall-bounded-flow). 
 
 Furtheremore, it is possible to create fluctuations which are divergence-free, fundamental for having more realistic eddys for incompressible flows. The final goal is to couple this package with an accurate flow solver in Julia.
@@ -66,11 +82,19 @@ Furtheremore, it is possible to create fluctuations which are divergence-free, f
     \vec{u}(\vec{x},t) = \vec{U}(\vec{x}) +  \vec{u'}(\vec{x},t)
 \end{equation}
 ```
+``` {=tex}
+\begin{equation}
+\vec{u'}(\vec{x},t) = \frac{1}{\sqrt{N}} \sum_{k=1}^N a_{i j} \epsilon_j^k f_{\sigma(\boldsymbol{x})}\left(\boldsymbol{x}-\boldsymbol{x}^k\right)
+\end{equation}
+```
 
-Creation of random located eddies, with prescribed dimension and random intensity (-1 or 1). At each time step they are convected $U_x\cdot dt$.
+- N = number of eddies 
+- $a_{i j}$  = Reynolds Tensor Cholesky decomposition
+- $f_{\sigma}$ = shape function
+- $\epsilon$ = random fluctuation
 
-Virtual Box: space where the eddies are created and covected.
-When one eddy exits the box, it is automatically recreated on the the other side at random location.
+
+
 
 ::: {.notes}
 Here is shown the Reynolds decomposition of velocity. The instanteneus velocity is the sum of a mean value and a random time-evolving fluctuation. 
@@ -81,8 +105,11 @@ The SEM aims to recreate the fluctuations.
 ## 
 ![Virtual Box](/images/VirtualBox.png){width=80%}
 
+Creation of random located eddies, with prescribed dimension and random intensity (-1 or 1). At each time step they are convected $U_x\cdot dt$.
+
+
 ::: {.notes}
-Here it is a graphical representation of the Virtual Box. It is a numeric aritfacts, the idea is to put the inlet plane in a virtual box, where eddies are randomly generated and convected. When one eddy exits the box, it is automatically recreated on the the other side at random location.
+The idea is to randomly create eddies in a virtual box, which is a numeric aritfacts. Here you can see a representation. The inlet plane is in  virtual box, where eddies are randomly generated and convected. When one eddy exits the box, it is automatically recreated on the the other side at random location.
 :::
 
 ## Usage
@@ -109,7 +136,7 @@ The VirtualBox is created. As you may notice, the default shape function is the 
 
 ## Usage
 
-Providing the Reynolds stress tensor, eddy dimension, and the size of the domain.
+Providing the Reynolds stress tensor, or the turbulence intensity to initialize the eddies.
 ```{julia}
 dt = 0.001
 U₀ = 1.0
@@ -121,14 +148,14 @@ Eddies[1]
 
 ::: {.notes}
 The user provide the velocity in the x direction, and one of the possibility is to provide the turbulence intensity.
-The new abstract Type Eddy has been introduces, and SemEddy is a concrete type. Each eddy has a centre or location, which is updated (the x coordinate) when the fluctuations are evaluated at a nex time step. They can contribute reducing or increasing the velocity, thats the meaning of epsilon.
+The new abstract Type Eddy has been introduces, and SemEddy is a concrete type. 
 
-Each Eddy is idenfied with a unque number, and each of them has a centre, here is the representation of some of them.
+Each Eddy is idenfied with a unque number, and each of them has a centre xi, which is updated (the x coordinate) when the fluctuations are evaluated at a nex time step. They can contribute reducing or increasing the velocity, thats the meaning of ei.
 :::
 
-##
+<!-- ##
 
-![Eddies' centre location in the Virtual Box](/images/Eddy_position.png){width=80%}
+![Eddies' centre location in the Virtual Box](/images/Eddy_position.png){width=80%} -->
 
 
 
@@ -158,7 +185,7 @@ Statistical validation
 ![Turbulent spectra](/images/Spectra.png){width=50%}
 
 ::: {.notes}
-The features of the package have been statistically validated. It creates a turbulent spectra, with the decay in the sub inertial reagion close to the well know -5/3 trend. Here we can see that the effort has produced the expected results, expecially in comparison with the random fluctuation which spectra is not realistic. Standard deviation of the fluctuation is the prescribed turbulence intensity.
+The features of the package have been statistically validated. It creates a turbulent spectra, where the decay in the sub inertial region is close to the well know -5/3 trend. Here we can see that the effort has produced the expected results, expecially in comparison with the random fluctuation which spectra is not realistic. Furthermore, as the TI increase, also the global energy of the spectra grows.
 :::
 
 ## Validation
@@ -167,12 +194,12 @@ Mean value of the fluctuations is zero
 ![v' cumulated mean](/images/SEM_mean1.png){height=50%}
 
 :::  {.notes}
-The mean value of the fluctuation converge towards zero.
+The cumulated mean value of the fluctuation converge towards zero.
 :::
 
 
 
-## Validation
+<!-- ## Validation
 
 Autocorrelation properties
 
@@ -191,7 +218,7 @@ Ability to create a quasi non-zero divergence free flow
 
 ::: {.notes}
 It has the ability to created a flow divergence free almost everywhere, and the standard deviation is the given turbulence intensity.
-:::
+::: -->
 
 
 ## Example
