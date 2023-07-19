@@ -22,11 +22,32 @@ code-block-bg: true
 code-block-border-left: "#31BAE9"
 ---
 
-## Why SyntheticEddyMethod?
+## Turbulence
+![LES airfoil sd7003, streamlines](/images/sd7003.mp4){width=80%}
+
+{{< video /images/sd7003.mp4 width="100%" height="85%" >}}
+::: {layout-ncol=2}
+- Fluctuations
+- Unsteady
+
+### 
+- Caothic
+- Tridimensional
+:::
+
+
+
+::: {.notes}
 <!-- ::: {.notes}
 Hello everyone, it is a pleasure to be at JuliaCon. 
 Welcome to the presentation of SyntheticEddyMethod, thank you for joining me today. My name is Carlo Brunelli, I work as a reasercher at the RMA in Brussels, and I am here to show you a new package and how to use it. 
 ::: -->
+The package is thought to be used for fluid dynamic research, where turbulence and its effects are challenging to study.
+A turbulent flow is characterized by irregular fluctuations in velocity, pressure, and other flow properties. we can find vortices, eddies, and rapid variations in flow direction and speed. Understanding and modeling turbulence is crucial in many fields of science and engineering
+:::
+
+## Why SyntheticEddyMethod?
+
 ::: {layout-ncol=2}
 ### Goal
 - Create realistic turbulent fluctuations for Fluid Dynamic simulations
@@ -40,23 +61,9 @@ Welcome to the presentation of SyntheticEddyMethod, thank you for joining me tod
 ![LES airfoil sd7003, vorticity contour](/images/uh_Z.png){width=80%}
 
 ::: {.notes}
-SEM aims to do one simple thing: recreate realistic turbulent fluctuations, especially for Large Eddy Simulations (LES).
-In the field of fluid mechanics for high fidelity simulations, has arisen the need of creating proper turbulent intial or inlet conditions. For example, when simulating the flow over an airfoil, the flow physical features are strongly dependent on the boundary conditions, and expecially the turbulence intensity. It is crucial for studying transition and separation phenomena. The package helps turbulence modeling by recreating numerically realistic turbulent fluctuations. 
+SEM aims to do one simple thing: recreate realistic turbulent fluctuations to be used in the field of fluid mechanics. Such fluctuations can be set as boundary or initial conditions, for high fidelity simulations. For example, when simulating the flow over an airfoil, the flow physical features are strongly dependent on the boundary conditions, and expecially the turbulence intensity. It is crucial for studying transition and separation phenomena. The package helps turbulence modeling by recreating numerically realistic turbulent fluctuations. 
 :::
 
-## Turbulence
-![LES airfoil sd7003, streamlines](/images/sd7003.mp4){width=80%}
-
-{{< video /images/sd7003.mp4 width="100%" height="85%" >}}
-
-- Fluctuations
-- Unsteady
-- Caothic
-- Tridimensional
-
-::: {.notes}
-Turbulence it is characterized by irregular fluctuations in velocity, pressure, and other flow properties. Turbulent flows are characterized by the presence of vortices, eddies, and rapid variations in flow direction and speed. It occurs when the fluid flow becomes unstable and from a smooth and ordered state becomes a caothic. Understanding and modeling turbulence is crucial in many fields of science and engineering.
-:::
 
 ## Features
 ::: {.incremental}
@@ -64,7 +71,7 @@ Turbulence it is characterized by irregular fluctuations in velocity, pressure, 
 - Choose between different shape functions
 - Impose the Reynolds stress (globally or locally) / Turbulence Intensity
 - Divergence-free constraint, @Poletto2013
-- It can be coupled with a fluid dynamic code solver, or used stand-alone and save the produced results which can be then read by the code
+<!-- - It can be coupled with a fluid dynamic code solver, or used stand-alone and save the produced results which can be then read by the code -->
 :::
 
 ::: {.notes}
