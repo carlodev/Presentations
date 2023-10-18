@@ -1,0 +1,100 @@
+\documentclass{beamer}
+\usepackage{amsfonts,amsmath,oldgerm}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{siunitx}
+
+\usepackage[english]{babel}
+\usepackage[export]{adjustbox}
+\usepackage{caption} %For subfigures
+\usepackage{subcaption} %For subfigures
+\usepackage{placeins} %FloatBarriers
+
+\usetheme{sintef}
+
+\newcommand{\testcolor}[1]{\colorbox{#1}{\textcolor{#1}{test}}~\texttt{#1}}
+
+\usefonttheme[onlymath]{serif}
+\graphicspath{{assets/images/}}
+
+
+\titlebackground*{assets/logos/background}
+
+\newcommand{\hrefcol}[2]{\textcolor{cyan}{\href{#1}{#2}}}
+
+\title{Numerical study of the airflow over a high-altitude pseudo-satellite wing}
+\subtitle{PhD update}
+
+\author{\href{mailto:mail@carlobrunelli.com}{Carlo Brunelli}}
+
+
+\newcommand{\VV}[1] {\vv{\vv{#1}}}
+
+\begin{document}
+\maketitle
+
+
+\begin{frame}
+
+PhD presentation after 1.5 years
+
+\end{frame}
+
+\section{Numerical Methods}
+\input{NumericalMethods.tex}
+
+
+\section{Performances}
+
+\begin{frame}{Performances}
+Weak Scaling
+
+Strong Scaling
+
+\end{frame}
+
+
+\section{Synthetic Eddy Method}
+\input{SEM.tex}
+
+
+\section{Laminar Separation Bubble}
+\input{LSB.tex}
+
+
+
+\section{Other activities}
+\begin{frame}
+\begin{itemize}
+	\item Synthetic Eddy Method \href{https://www.theoj.org/joss-papers/joss.05565/10.21105.joss.05565.pdf}{publication}
+	\item JuliaCon 2023 conference
+	\item Co-author AIAA 2023 conference paper
+\end{itemize}
+
+\end{frame}
+
+
+\section{Next steps}
+\begin{frame}
+\begin{itemize}
+	\item VMS paper (prof. Janssens reading)
+	\item Experimental validation of the LS-VMS - publish paper
+	\item LC-VMS - publish paper?
+\end{itemize}
+
+\begin{itemize}
+	\item AIAA2024 conferences (LS-VMS, LC-VMS)
+	\item DLES14 
+	\item ICAS2024
+\end{itemize}
+
+\end{frame}
+
+
+
+\end{document}

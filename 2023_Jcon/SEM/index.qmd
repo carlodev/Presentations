@@ -147,9 +147,14 @@ Providing the Reynolds stress tensor, or the turbulence intensity to initialize 
 ```{julia}
 dt = 0.001
 U₀ = 1.0
-TI = 0.01 #turbulence intensity
+#TI = 0.01 #turbulence intensity
 
-Re_stress, Eddies = initialize_eddies(U₀, TI, Vboxinfo)
+Re_stress = [1.87e-5 -8.6e-8  -8.2e-7; 
+              -8.6e-8 5.27e-8 6.8e-8; 
+              -8.2e-7 4.9e-9 2.64e-6]
+
+
+Eddies = initialize_eddies(Vboxinfo)
 Eddies[1]
 ```
 
@@ -195,14 +200,22 @@ Statistical validation
 The features of the package have been statistically validated. It creates a turbulent spectra, where the decay in the sub inertial region is close to the well know -5/3 trend. Here we can see that the effort has produced the expected results, expecially in comparison with the random fluctuation which spectra is not realistic. Furthermore, as the TI increase, also the global energy of the spectra grows.
 :::
 
+
 ## Validation
+Divergence Free
+
+![Normalized divergence samples over 10000-time steps using DFSEM](/images/dfsem_zero_div.png){width=15%}
+
+
+
+<!-- ## Validation
 Mean value of the fluctuations is zero
 
 ![v' cumulated mean](/images/SEM_mean1.png){height=50%}
 
 :::  {.notes}
 The cumulated mean value of the fluctuation converge towards zero.
-:::
+::: -->
 
 
 

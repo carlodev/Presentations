@@ -1,0 +1,30 @@
+\begin{frame}{SyntheticEddyMethod.jl}
+\begin{itemize}
+\item \href{https://www.theoj.org/joss-papers/joss.05565/10.21105.joss.05565.pdf}{publication}
+\item presented at \textit{JuliaCon2023} at MIT
+\end{itemize}
+
+Features:
+\begin{itemize}
+\item Create fluctuations that respect the divergence-free condition (DFSEM)
+\item Create velocity fluctuations for inlet boundary conditions
+\item Create coherenteddies in 3D domain
+\item Define custom Reynolds Stress Tensor
+\item Import from file custom Reynolds Stress Tensor
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Synthetic Eddy Method}
+Reynolds decomposition:
+\begin{equation}
+    \Vec{u}(\Vec{x},t) = \Vec{U}(\Vec{x},t) +  \Vec{u'}(\Vec{x},t)
+    \label{sem:u}
+\end{equation}
+
+Compute velocity fluctuations, using a suitable shape function:
+\begin{equation}
+u_i(\boldsymbol{x})=U_i(\boldsymbol{x})+\frac{1}{\sqrt{N}} \sum_{k=1}^N a_{i j} \epsilon_j^k f_{\sigma(\boldsymbol{x})}\left(\boldsymbol{x}-\boldsymbol{x}^k\right)
+\label{sem:ui}
+\end{equation}
+\end{frame}

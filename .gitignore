@@ -18,3 +18,12 @@ Evaluations/
 **/gif_ld
 *.pvd
 *.gitignore
+*.mp4
+*.log
+*.nav
+*.out
+*.toc
+*.vrb
+*.gz
+*.snm
+**/libs

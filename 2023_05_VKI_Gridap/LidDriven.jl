@@ -73,7 +73,7 @@ begin
 	N = 50 #Number of cells for each dimension
 	order = 1 #element order
 	t0 = 0.0
-	tF = 0.1
+	tF = 5.0
 	dt = 0.01
 
 	D = 2 #dimension (2d or 3d)
@@ -380,7 +380,7 @@ PlutoUI = "~0.7.51"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.5"
+julia_version = "1.8.2"
 manifest_format = "2.0"
 project_hash = "f7d5f738b240a560c3b59098d9df975b26c4a596"
 
@@ -546,7 +546,7 @@ version = "4.6.1"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
-version = "1.0.1+0"
+version = "0.5.2+0"
 
 [[deps.ConcurrentUtilities]]
 deps = ["Serialization", "Sockets"]
@@ -1965,7 +1965,7 @@ version = "1.4.1+0"
 # ╠═44d643c6-c303-48c6-895e-07d719b8b6ba
 # ╟─dbf207a0-eab8-49ed-95bb-be8ff29d45fd
 # ╠═cb8f0374-a55d-4a24-a1fd-74d05982cb4e
-# ╠═589c08e9-9f7d-46f1-8e19-cba7c4cca68d
+# ╟─589c08e9-9f7d-46f1-8e19-cba7c4cca68d
 # ╠═095063fd-a9f4-4589-bb6a-20bd9c70f75b
 # ╟─a94f53a0-22dd-4f2e-aea5-fc0b5aab4bba
 # ╠═d9726987-3b88-4962-9797-e2f6f1126192
