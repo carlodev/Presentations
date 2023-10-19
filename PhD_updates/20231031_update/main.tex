@@ -50,14 +50,7 @@ PhD presentation after 1.5 years
 
 
 \section{Performances}
-
-\begin{frame}{Performances}
-Weak Scaling
-
-Strong Scaling
-
-\end{frame}
-
+\input{Performances.tex}
 
 \section{Synthetic Eddy Method}
 \input{SEM.tex}
@@ -69,28 +62,56 @@ Strong Scaling
 
 
 \section{Other activities}
-\begin{frame}
+\begin{frame}{Other activities}
 \begin{itemize}
 	\item Synthetic Eddy Method \href{https://www.theoj.org/joss-papers/joss.05565/10.21105.joss.05565.pdf}{publication}
 	\item JuliaCon 2023 conference
 	\item Co-author AIAA 2023 conference paper
 \end{itemize}
 
+\begin{itemize}
+	\item Testing standard passive flow controls (no improvment in aerodynamic efficiency)
+\end{itemize}
+
 \end{frame}
 
 
+
+\section{Element of novelty}
+\begin{frame}{Elements of novelty}
+\begin{itemize}
+	\item Systematic usage of Julia in fluid-dynamics
+	\item Usage of VMS for high Reynolds airfoil
+	\item First LES code in Julia - fully parallelized - working with 3D airfoils up to Re $\num{500000}$ 
+	\item Synthetic Eddy Method coded in Julia and coupled with the VMS
+\end{itemize}
+
+It has been challenging, but it seems we are on the right path!
+
+\end{frame}
+
 \section{Next steps}
-\begin{frame}
+\begin{frame}{Next steps}
+Expected papers:
 \begin{itemize}
 	\item VMS paper (prof. Janssens reading)
 	\item Experimental validation of the LS-VMS - publish paper
-	\item LC-VMS - publish paper?
+	\item LC-VMS - (publish paper?)
 \end{itemize}
 
+Expected conferences:
 \begin{itemize}
 	\item AIAA2024 conferences (LS-VMS, LC-VMS)
-	\item DLES14 
-	\item ICAS2024
+	\item DLES14 (VMS usage, validation test cases)
+	\item ICAS2024 (Passive Flow Controls)
+\end{itemize}
+
+
+Expected research:
+\begin{itemize}
+	\item Uncertainty Quantification using Polynomials Chaos Transformation
+	\item Start coding the adjoint optimization
+	\item Test a passive flow control with the VMS
 \end{itemize}
 
 \end{frame}

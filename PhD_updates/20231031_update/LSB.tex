@@ -9,6 +9,14 @@
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Models}
+sd7003s - Re $\num{60000}$ - AoA $\ang{4}$ 
+\begin{figure}[h]
+     \centering          
+         \includegraphics[width=0.65\textwidth]{ sd7003_differentmodels.pdf}
+         \caption{Different model provides different results. RANs use $\gamma -Re_ \theta$ model.}
+     \end{figure} 
+\end{frame}
 
 \begin{frame}{VMS linearized coupled sd7003s}
 Copuled: velocity and pressure are solved at the same time.
@@ -32,7 +40,8 @@ Re $\num{60000}$ - AoA $\ang{4}$ . Initialization with velocity-ramping
 \begin{frame}{ VMS linearized coupled sd7003s}
 \begin{figure}[h]
      \centering          
-         \includegraphics[width=\textwidth]{SD7003_Cf_zoom.pdf}
+         \includegraphics[width=0.8\textwidth]{SD7003_Cf_zoom.pdf}
+         \caption{Bubble position function of freestream turbulence intensity}
      \end{figure} 
 \end{frame}
 
@@ -40,7 +49,15 @@ Re $\num{60000}$ - AoA $\ang{4}$ . Initialization with velocity-ramping
 
 
 \begin{frame}{VMS Linearized-Segregated}
-Segregated: each time step pressure and velocity sistem are solved one after the other multiple times. It is possible to re-use the matrices and preconditioner. Iterative method.
+Segregated: each time step pressure and velocity system are solved one after the other multiple times. It is possible to re-use the matrices and preconditioner. It is an iterative method.
+
+\end{frame}
+
+
+
+
+\begin{frame}{VMS Linearized-Segregated}
+PhD research aims to simulate new a new airfoil.
 Re $\num{250000}$ - AoA $\ang{1}$ 
 
 \begin{figure}[h]
