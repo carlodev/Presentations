@@ -1,27 +1,30 @@
 \begin{frame}{Model Variables}
+RANS Re $\num{60000}$ - AoA $\ang{4}$ sd7003.
+
 \begin{itemize}
-    \item    TI - turbulence intensity
-    \item $\mu r$ - turbulent viscoity ratio
+    \item    $TI \; (\mu =5.0\cdot 10^{-4} ; \sigma=2\cdot 10^{-4})$- turbulence intensity
+    \item $\mu_r \in [1,10]$ - turbulent viscosity ratio
 \end{itemize}
 
 $k-\omega$ parameters:
 \begin{itemize}
-    \item $\sigma \omega 1$
-    \item $\alpha 1$ 
-    \item $\beta *$  
+    \item $\sigma \omega 1\; (\mu =0.5 ; \sigma=0.0667 )$
+    \item $\alpha 1\; (\mu = 0.31 ;\sigma= 0.03)$ 
+    \item $\beta *\; (\mu = 0.09; \sigma=0.0041 )$  
 \end{itemize}
 $\gamma Re_\theta$ parameters
 \begin{itemize}
-\item $s1 $
-\item $C1$
+\item $s1\in [2,11]$
+\item $C1\in [2,4]$
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Sobolov Indexes}
+\begin{frame}{Sobol Indexes}
+    
     \begin{figure}
         \centering
-        \includegraphics[width=0.7\textwidth]{Sobol_Indexes_sd7003.pdf}
+        \includegraphics[width=0.7\textwidth]{Sobol_sd7003.pdf}
         \caption{Sobol' indices for 3D RANS variables}
 \end{figure} 
 \end{frame}

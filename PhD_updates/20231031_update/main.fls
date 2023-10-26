@@ -685,11 +685,11 @@ INPUT main.toc
 INPUT .\UncertaintyQuantification.tex
 INPUT .\UncertaintyQuantification.tex
 INPUT UncertaintyQuantification.tex
-INPUT .\assets\images\Sobol_Indexes_sd7003.pdf
-INPUT .\assets\images\Sobol_Indexes_sd7003.pdf
-INPUT .\assets\images\Sobol_Indexes_sd7003.pdf
-INPUT .\assets\images\Sobol_Indexes_sd7003.pdf
-INPUT .\assets\images\Sobol_Indexes_sd7003.pdf
+INPUT .\assets\images\Sobol_sd7003.pdf
+INPUT .\assets\images\Sobol_sd7003.pdf
+INPUT .\assets\images\Sobol_sd7003.pdf
+INPUT .\assets\images\Sobol_sd7003.pdf
+INPUT .\assets\images\Sobol_sd7003.pdf
 INPUT .\main.toc
 INPUT .\main.toc
 INPUT main.toc
