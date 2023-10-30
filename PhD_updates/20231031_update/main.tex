@@ -8,6 +8,7 @@
 \usepackage{hyperref}
 \usepackage{verbatim}
 \usepackage{siunitx}
+\usepackage{bm}
 
 \usepackage[english]{babel}
 \usepackage[export]{adjustbox}
@@ -69,7 +70,8 @@ PhD presentation after 1.5 years
 \section{Uncertainty Quantification}
 \input{UncertaintyQuantification.tex}
 
-\section{Other activities}
+\section{Conclusions}
+
 \begin{frame}{Other activities}
 \begin{itemize}
 	\item Synthetic Eddy Method \href{https://www.theoj.org/joss-papers/joss.05565/10.21105.joss.05565.pdf}{publication}
@@ -80,12 +82,31 @@ PhD presentation after 1.5 years
 \begin{itemize}
 	\item Testing standard passive flow controls (no improvement in aerodynamic efficiency)
 \end{itemize}
-
+\begin{figure}[h]
+	\centering          
+	\begin{subfigure}[h]{0.30\textwidth}
+			 \centering
+		\includegraphics[width=\textwidth]{Slot.pdf}
+		\caption{Slot}
+   \end{subfigure}
+   \hfill	
+   \begin{subfigure}[h]{0.30\textwidth}
+			\centering
+	   \includegraphics[width=\textwidth]{Slot-curved.pdf}
+	   \caption{Slot curved}
+	\end{subfigure}
+		 \hfill
+	\begin{subfigure}[h]{0.30\textwidth}
+	 \centering
+		\includegraphics[width=\textwidth]{Riblet.pdf}
+		\caption{Riblet}
+	\end{subfigure}
+	\caption{Passive Flow Controls}
+	\end{figure} 
 \end{frame}
 
 
 
-\section{Element of novelty}
 \begin{frame}{Elements of novelty}
 \begin{itemize}
 	\item Systematic usage of Julia in fluid-dynamics
@@ -98,7 +119,6 @@ It has been challenging, but it seems we are on the right path!
 
 \end{frame}
 
-\section{Next steps}
 \begin{frame}{Next steps}
 Expected papers:
 \begin{itemize}

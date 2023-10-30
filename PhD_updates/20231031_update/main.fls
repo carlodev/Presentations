@@ -309,6 +309,8 @@ INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\latex\translatio
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\latex\translations\translations.sty
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\latex\tools\bm.sty
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\latex\tools\bm.sty
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\generic\babel\babel.sty
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\generic\babel\babel.sty
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\generic\babel\txtbabel.def
@@ -500,12 +502,24 @@ INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\ams
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\latex\caladea\t1caladea-tlf.fd
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\latex\caladea\t1caladea-tlf.fd
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\tex\latex\caladea\t1caladea-tlf.fd
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Italic-tlf-t1.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Italic-tlf-t1.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Italic-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx7.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx5.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmib10.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib7.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib5.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbsy10.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy7.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy5.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\google\carlito\Crlt-osf-t1.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\vf\google\carlito\Crlt-osf-t1.vf
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\google\carlito\Crlt-osf-t1--base.tfm
@@ -538,12 +552,24 @@ INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\ams
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Italic-tlf-t1.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Italic-tlf-t1.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Italic-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx8.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx6.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmib10.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib8.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib6.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbsy10.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy8.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy6.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1.tfm
 INPUT .\NumericalMethods.tex
 INPUT .\NumericalMethods.tex
 INPUT NumericalMethods.tex
@@ -562,6 +588,20 @@ INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\vf\huerta\cala
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Italic-tlf-t1--base.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\vf\huerta\caladea\Caladea-Regular-tlf-t1.vf
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Regular-tlf-t1--base.tfm
+INPUT .\assets\images\Theta_stab_nstab.pdf
+INPUT .\assets\images\Theta_stab_nstab.pdf
+INPUT .\assets\images\Theta_stab_nstab.pdf
+INPUT .\assets\images\Theta_stab_nstab.pdf
+INPUT .\assets\images\Theta_stab_nstab.pdf
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Bold-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Bold-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Bold-tlf-t1.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\vf\huerta\caladea\Caladea-BoldItalic-tlf-t1.vf
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1--base.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\vf\huerta\caladea\Caladea-BoldItalic-tlf-t1.vf
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1--base.tfm
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\vf\huerta\caladea\Caladea-Bold-tlf-t1.vf
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Bold-tlf-t1--base.tfm
 INPUT .\main.toc
 INPUT .\main.toc
 INPUT main.toc
@@ -611,25 +651,24 @@ INPUT SEM.tex
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\google\carlito\Crlt-Italic-osf-t1.tfm
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\vf\google\carlito\Crlt-Italic-osf-t1.vf
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\google\carlito\Crlt-Italic-osf-t1--base.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx8.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx6.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmib10.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib8.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmmib6.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbsy10.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy8.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmbsy6.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Bold-tlf-t1.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Bold-tlf-t1.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-Bold-tlf-t1.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\vf\huerta\caladea\Caladea-BoldItalic-tlf-t1.vf
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1--base.tfm
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\vf\huerta\caladea\Caladea-BoldItalic-tlf-t1.vf
-INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\tfm\huerta\caladea\Caladea-BoldItalic-tlf-t1--base.tfm
+INPUT .\assets\images\Isovel.png
+INPUT .\assets\images\Isovel.png
+INPUT .\assets\images\Isovel.png
+INPUT .\assets\images\Isovel.png
+INPUT .\assets\images\Isovel.png
+INPUT .\assets\images\Isovel.png
+INPUT .\assets\images\VirtualBox.png
+INPUT .\assets\images\VirtualBox.png
+INPUT .\assets\images\VirtualBox.png
+INPUT .\assets\images\VirtualBox.png
+INPUT .\assets\images\VirtualBox.png
+INPUT .\assets\images\VirtualBox.png
+INPUT .\assets\images\SEM_vs_RAND_step.png
+INPUT .\assets\images\SEM_vs_RAND_step.png
+INPUT .\assets\images\SEM_vs_RAND_step.png
+INPUT .\assets\images\SEM_vs_RAND_step.png
+INPUT .\assets\images\SEM_vs_RAND_step.png
+INPUT .\assets\images\SEM_vs_RAND_step.png
 INPUT .\main.toc
 INPUT .\main.toc
 INPUT main.toc
@@ -725,18 +764,29 @@ INPUT .\assets\images\Sobol_sd7003.pdf
 INPUT .\main.toc
 INPUT .\main.toc
 INPUT main.toc
-INPUT .\main.toc
-INPUT .\main.toc
-INPUT main.toc
-INPUT .\main.toc
-INPUT .\main.toc
-INPUT main.toc
+INPUT .\assets\images\Slot.pdf
+INPUT .\assets\images\Slot.pdf
+INPUT .\assets\images\Slot.pdf
+INPUT .\assets\images\Slot.pdf
+INPUT .\assets\images\Slot.pdf
+INPUT .\assets\images\Slot-curved.pdf
+INPUT .\assets\images\Slot-curved.pdf
+INPUT .\assets\images\Slot-curved.pdf
+INPUT .\assets\images\Slot-curved.pdf
+INPUT .\assets\images\Slot-curved.pdf
+INPUT .\assets\images\Riblet.pdf
+INPUT .\assets\images\Riblet.pdf
+INPUT .\assets\images\Riblet.pdf
+INPUT .\assets\images\Riblet.pdf
+INPUT .\assets\images\Riblet.pdf
 OUTPUT main.nav
 OUTPUT main.toc
 OUTPUT main.snm
 INPUT main.aux
 INPUT .\main.out
 INPUT .\main.out
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\huerta\caladea\Caladea-Bold.pfb
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\huerta\caladea\Caladea-Bold.pfb
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\huerta\caladea\Caladea-BoldItalic.pfb
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\huerta\caladea\Caladea-BoldItalic.pfb
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\huerta\caladea\Caladea-Italic.pfb
@@ -749,6 +799,12 @@ INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\google\c
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\google\carlito\Crlt-Italic.pfb
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\google\carlito\Crlt-Regular.pfb
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\google\carlito\Crlt-Regular.pfb
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmbsy8.pfb
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmbsy8.pfb
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx8.pfb
+INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx8.pfb
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\Carlo Brunelli\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb

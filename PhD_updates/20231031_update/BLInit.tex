@@ -37,6 +37,26 @@
     Solved using a method that resembles Picard's
     \end{frame}
     
+
+    \begin{frame}{Find wall-distance}
+    \begin{equation}
+        v_p = -|\nabla u_p|^{p-1} + \bigg ( \dfrac{p}{p-1}u_p +  |\nabla u_p|^{p}\bigg ) ^{\dfrac{p}{p-1}}
+        \label{equ:vpoisson}
+    \end{equation}
+    \begin{enumerate}
+        \item It starts solving the equation for p=2
+        \item \begin{equation}
+            \int \bigg (\nabla (v) \cdot (\nabla u_{hp}) \bigg )d\Omega = \int \bigg( 1\cdot v \bigg )d\Omega
+        \end{equation}
+        \item It solves the linearized equation, which becomes \eqref{equ:ppoisson-fem2}. In this case solving for p=3 the $\tilde{u}$ is $uh_2$
+          \begin{equation}
+            \int \bigg (\nabla (v) \cdot (|\nabla \tilde{u}|^{p-2} \nabla u) \bigg )d\Omega = \int \bigg( 1\cdot v \bigg )d\Omega
+            \label{equ:ppoisson-fem2}
+        \end{equation}
+        \item It is not possible to iterate step 3 for p > 3, the solution becomes unstable. It introduces the relaxation coefficient $\gamma = 0.5$ and it starts an internal cycle.
+    \end{enumerate}
+    \end{frame}
+
     \begin{frame}{Boundary Layer Initialization}
     The velocity in the $x$ direction in the region identified can be with a simple cubic function \eqref{equ:bl-cubic-init} where $dn = d/\delta_{99}$, $d$ is the minimum distance to the airfoil, $u_\infty$ is the free-stream flow speed.
     \begin{equation}
