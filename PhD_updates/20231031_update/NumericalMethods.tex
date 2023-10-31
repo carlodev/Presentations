@@ -201,16 +201,17 @@ $$u^m=u^n+\Delta t a^m$$
 $$p^m = p^n + \sum_{i=0}^m \Delta p^i$$
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Segregated Linearized Equations}
+  Velocity equation:
   \begin{equation}
     \begin{split}
     (T_{uu}+\theta \Delta t A_{uu})\bm{\Delta a^*} = -A_{uu}u^m- Au_{up}p^m - (T_{uu}+\theta\Delta t A_{uu})a^m+A_{uu}\Delta t a^m +\\+ A_{uu}\Delta t a^m + (1-\theta)A_{up}\sum_{i=0}^m \Delta p^i  
   \end{split}
   \label{equseg:mom1}
 \end{equation}
-
+Pressure equation:
 \begin{equation}
-  \begin{split}
+ \begin{split}
   \bigg( (T_{pu}+\Delta t A_{pu})(T_{uu}+\theta\Delta t A_{uu})^{-1} \theta A_{up} - App \bigg ) \bm{\Delta p^{m+1}} = \\= T_{pu}\Delta a^* + A_{pu}(u^m+\Delta t\Delta a^*)+A_{pp}p^m+T_{pu}a^m
 \end{split}
 \label{equseg:cont1}
