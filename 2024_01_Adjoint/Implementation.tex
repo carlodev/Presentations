@@ -1,0 +1,109 @@
+\begin{frame}{Continuous Adjoint}
+\begin{itemize}
+\item Continuous Adjoint: equations available
+\item Steady (an unsteady version is also implemented, is just faster for validation)
+\item Stabilized: SUPG stabilization - same order element interpolation
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Procedure}
+Define the objective function $I$ to minimize (eg: Drag coefficient)
+
+\begin{minted}{julia1}
+function compute_drag(uh,ph,nΓ,dΓ,params)
+    CD, _ = compute_airfoil_coefficients(uh,ph,nΓ,dΓ,params)
+    return CD, CD
+end
+\end{minted}
+
+\begin{minted}{julia1}
+function compute_airfoil_forces(uh,ph,nΓ,dΓ,params::Dict{Symbol,Any})
+    @unpack tagname,ν = params
+    IForce = ∫(-ph ⋅ nΓ + ν* transpose(∇(uh)) ⋅ nΓ)dΓ
+    D,L = sum(IForce)
+    return D,L
+end
+\end{minted}
+\end{frame}
+
+
+\begin{frame}[fragile]{Procedure}
+Solve the primal Flow
+  \begin{minted}[fontsize=\footnotesize]{julia1}
+function primal_steady_SUPG(params::Dict{Symbol,Any})
+@unpack ν, dt, dΩ, D, Ω, θ,uh = params
+h = h_param(Ω, D)
+updatekey(params, :h,h)
+a((u, p), (v, q)) = ∫(ν * ∇(v) ⊙ ∇(u) + ∇(p) ⊙ v + q * (∇ ⋅ u))dΩ + ∫(v ⊙ (conv ∘ (uh, ∇(u))))dΩ
+Rm(u, p) = conv ∘ (uh, ∇(u)) + ∇(p)
+astab((u, p), (v, q)) = ∫( τsu(uh, h,ν,dt) ⋅ (uh ⋅ ∇(v) + ∇(q)) ⊙ Rm(u, p))dΩ 
++ ∫( τb(uh, h,ν,dt) ⋅ (∇ ⋅ v) ⊙ (∇ ⋅ u))dΩ
+res_prim((u, p), (v, q)) = a((u, p), (v, q)) + astab((u, p), (v, q))
+return res_prim
+end
+\end{minted}
+\end{frame}
+
+
+\begin{frame}[fragile]{Procedure}
+  Solve the adjoint Flow
+    \begin{minted}[fontsize=\footnotesize,bgcolor=bg]{julia1}
+  function adjoint_steady_SUPG(params::Dict{Symbol,Any})
+    @unpack ν, dt, dΩ, D, Ω, θ,uh = params
+    h = h_param(Ω, D)
+    updatekey(params,:h,h)   
+    Rmadj(u, p) = -uh ⋅ ∇(u) - ∇(u) ⋅ uh - ∇(p)
+    Rcadj(u) = -1 .* (∇ ⋅ (u))
+    a_adj((u, p), (v, q)) = ∫(ν * ∇(v) ⊙ ∇(u) - q * (∇ ⋅ u))dΩ + ∫(v ⊙ Rmadj(u, p))dΩ
+    a_adj_stab((u, p), (v, q)) = ∫( τsu(uh, h,ν,dt) ⋅ (-uh ⋅ ∇(v) - ∇(v) ⋅ uh - ∇(q)) 
+                  ⊙ Rmadj(u, p))dΩ + -1 * ∫( τb(uh, h,ν,dt) ⋅ (∇ ⋅ v) ⊙ Rcadj(u))dΩ
+    res_adj((u, p), (v, q)) = a_adj((u, p), (v, q)) + a_adj_stab((u, p), (v, q))
+    return res_adj
+
+end
+  \end{minted}
+  \end{frame}
+
+\begin{frame}[fragile]{Parametrization}
+    The airfoil is parametrized using Class Shape Transformations (CST), to obtain easily arifoil-like shapes.
+    We start from from a classic NACA0012 airfoil.
+    Identified by CST weights for top and bottom surface:
+    \begin{minted}[fontsize=\footnotesize,bgcolor=bg]{julia1}
+      wu = [0.17085744048372403, 0.15451770272052714, 0.15810479767059346, 0.1359573306370066,
+       0.14221259398479932, 0.14001089993692417]
+      wl = -1 .* [0.17085744048372403, 0.15451770272052714, 0.15810479767059346, 0.1359573306370066, 
+      0.14221259398479932, 0.14001089993692417]
+    \end{minted}
+    6 parameters for the top, and 6 for the bottom surface: $\beta_i$, $i=1,...,12$, $i=1,...6$: top, $i=7,...12$ bottom.
+    
+\end{frame}
+
+\begin{frame}{Computing Reference values}
+Both primal and adjoint flow are solved on the original mesh $\Omega$.
+$$I = I_c + \int_\Omega\Psi\cdot\mathcal{R} = I_{1,ref}+I_{2,ref} $$
+
+If we want to minimize $C_D$: $I_c=C_D$
+\end{frame}
+
+
+\begin{frame}{Morphing mesh}
+  \begin{enumerate}
+    \item A design variable $\beta_i$ is perturbed by $\epsilon$:  $\beta_i+\epsilon$ 
+    \item The airfoil boundary and the mesh move accordingly obtaining a new $\Omega'$ domain
+    \item Evaluate $$I' = I_c' + \int_{\Omega'}\Psi\cdot\mathcal{R} = I_{1,i}+I_{2,i} $$
+    \item The sensitivity is obtained through
+      $$ \dfrac{\partial I }{\partial \beta _ i} = \dfrac{I'-I}{\epsilon}$$
+\end{enumerate}
+
+\end{frame}
+
+
+
+\begin{frame}{Morphing mesh}
+  \begin{figure}[h]
+     \includegraphics[width=\textwidth]{MeshMorphedAirfoil.png}
+    \caption{$\Omega$ in light blue, morphed mesh $\Omega'$ in black. Shift is emphasized for demonstration.}
+    \end{figure} 
+\end{frame}
+

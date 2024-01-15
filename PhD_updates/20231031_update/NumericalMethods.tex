@@ -1,11 +1,11 @@
 \begin{frame}{Numerical Method implemented}
-The numerical method currently implemented are:
+The numerical methods currently implemented are:
   \begin{itemize}
     \item Variational Multiscale Method (VMS)
     \item Streamline upwind Petrov–Galerkin (SUPG)
   \end{itemize} 
 
-Different solution method are available for all of them 
+Different solution methods are available for all of them 
   \begin{itemize}
     \item Non-linear (NLIN)
     \item Linearized-Coupled (LC-VMS)
@@ -17,7 +17,7 @@ Different solution method are available for all of them
 \begin{frame}{Variational Multiscale Method}
   \begin{itemize}
     \item Evolution of the SUPG
-    \item Implict LES
+    \item Implicit LES
     \item It does not need calibration
     \item Residual-based stabilization
   \end{itemize} 
@@ -40,12 +40,12 @@ Conservation of momentum:
 Variational Formulation
 \begin{equation}
 \begin{split}
-  B^G = &   \int_\Omega \dfrac{\partial \Vec{u}}{\partial t}\cdot \Vec{v}\;d\Omega +
+  B^G := &   \int_\Omega \dfrac{\partial \Vec{u}}{\partial t}\cdot \Vec{v}\;d\Omega +
     \int_\Omega(\Vec{u}\cdot\nabla)\Vec{u}\cdot \Vec{v} \;d\Omega+ 
     \int_\Omega \nabla (p)\cdot\Vec{v} \;d\Omega + \\
      & + \int_\Omega\nu\nabla\Vec{u}\cdot\nabla\Vec{v} \;d\Omega  -
         \int_\Omega f\cdot\Vec{v} \;d\Omega + 
-    \int_\Omega q(\nabla \cdot \Vec{u})\;d\Omega = 0
+    \int_\Omega q(\nabla \cdot \Vec{u})\;d\Omega
     \end{split}
     \label{equ:weak}
 \end{equation}
@@ -54,7 +54,7 @@ Variational Formulation
 
 \begin{frame}{Stabilization equations}
 \begin{equation}
-B^{SUPG}(t, (\Vec{u},p), (\Vec{v},q))  =     \int_\Omega(\tau_m(\Vec{u}\cdot\nabla \Vec{v} +\nabla q)\cdot\Vec{R_m} \;d\Omega+ \int_\Omega \tau_c (\nabla \cdot \Vec{v})R_c \;d\Omega
+B^{SUPG}(t, (\Vec{u},p), (\Vec{v},q))  =     \int_\Omega(\tau_m(\Vec{u}\cdot\nabla \Vec{v} +\nabla q)\cdot\Vec{R_m} \;d\Omega+ \int_\Omega \tau_c (\nabla \cdot \Vec{v})R_c \;)d\Omega
 \label{equ:bsupg}
 \end{equation}
 

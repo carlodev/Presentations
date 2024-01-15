@@ -1,0 +1,8 @@
+\begin{frame}
+    \begin{itemize}
+        \item Gradients for FD and Adjoint do not depend on $\epsilon$. $\epsilon=0.001$, same results for $\epsilon=0.01,0.0001$.
+        \item FD and Adjoint different results, but at least the sign is the same
+        \item The adjoint results are sensible to the boundary condition on the airfoil surface. Fixing $\Psi_u = [-1.0, 0.0]$ or $\Psi_u = [-C_D, 0.0]$ impact the gradients.
+        \item Error in boundary conditions? The error should be eliminated due to the difference $I'-I$.
+    \end{itemize}
+\end{frame}

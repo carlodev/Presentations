@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{function} \PYG{n+nf}{compute\PYGZus{}drag}\PYG{p}{(}\PYG{n+nv}{uh}\PYG{p}{,}\PYG{n+nv}{ph}\PYG{p}{,}\PYG{n+nv}{nΓ}\PYG{p}{,}\PYG{n+nv}{dΓ}\PYG{p}{,}\PYG{n+nv}{params}\PYG{p}{)}
+    \PYG{n+nv}{CD}\PYG{p}{,} \PYG{n+nv}{\PYGZus{}} \PYG{o}{=} \PYG{n+nf}{compute\PYGZus{}airfoil\PYGZus{}coefficients}\PYG{p}{(}\PYG{n+nv}{uh}\PYG{p}{,}\PYG{n+nv}{ph}\PYG{p}{,}\PYG{n+nv}{nΓ}\PYG{p}{,}\PYG{n+nv}{dΓ}\PYG{p}{,}\PYG{n+nv}{params}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n+nv}{CD}\PYG{p}{,} \PYG{n+nv}{CD}
+\PYG{k}{end}
+\end{Verbatim}

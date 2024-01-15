@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{Brunelli2023}
+Carlo Brunelli.
+\newblock Syntheticeddymethod.jl: A julia package for the creation of inlet
+  flow conditions for les.
+\newblock {\em Journal of Open Source Software}, 8:5565, 7 2023.
+
+\bibitem{Hughes2005}
+Thomas J~R Hughes, Victor~M Calo, and Guglielmo Scovazzi.
+\newblock {\em Variational and Multiscale Methods in Turbulence}.
+\newblock Springer, 2005.
+
+\bibitem{Schubauer47}
+Galen~B Schubauer and Harold~K Skramstad.
+\newblock Laminar boundary-layer oscillations and transition on a flat plate 1,
+  1947.
+
+\end{thebibliography}

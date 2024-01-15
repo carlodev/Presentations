@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1698740686 "c:/Users/Carlo Brunelli/Documents/GitHub/Presentations/PhD_updates/20231031_update/main.tex" "main.pdf" "main" 1698740694 0
+["pdflatex"] 1698743087 "c:/Users/Carlo Brunelli/Documents/GitHub/Presentations/PhD_updates/20231031_update/main.tex" "main.pdf" "main" 1698743095 0
   "BLInit.tex" 1698660708 3641 d9d1285be228e1f1e6ab41cb7343caac ""
   "C:/Users/Carlo Brunelli/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1698063024 98307 c4418033b4606782d6117e0f93f55af4 ""
   "C:/Users/Carlo Brunelli/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1698063299 24179469 cbef3315e212c5e4655ebed38f7b0508 ""
@@ -301,7 +301,7 @@
   "C:/Users/Carlo Brunelli/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "Conclusions.tex" 1698662822 2485 caa7cbd7efd936b070367537307ce6c2 ""
   "LSB.tex" 1698740685 6503 21c04a03be511f230aef588320ef28d4 ""
-  "NumericalMethods.tex" 1698663260 7377 fab54f44243fe1d6235d8256c7c639d0 ""
+  "NumericalMethods.tex" 1698743086 7378 a2b424891190834421f8acc24013f88f ""
   "Performances.tex" 1697727696 650 6804c6b514261158a8cfbabbe272ab0f ""
   "SEM.tex" 1698661669 2032 88af8b42770624fcbc9491f7cf3cd7d0 ""
   "UncertaintyQuantification.tex" 1698417978 844 98826655f69bd0fd369cc7f8a96ba7f4 ""
@@ -310,7 +310,7 @@
   "assets/images/Freestream_DU89_250000_AoA_1_Cf.pdf" 1698739742 15007 85eb900b032f35e9a01f0288c9e3e32a ""
   "assets/images/Freestream_DU89_250000_AoA_1_Cp.pdf" 1698739742 15169 e7946ce7d19aea0c89782e3cca65b891 ""
   "assets/images/Freestream_DU89_250000_AoA_5_Cf.pdf" 1698739195 14858 f1621cff05a03545dbee4a6691badb21 ""
-  "assets/images/Freestream_DU89_250000_AoA_5_Cp.pdf" 1698739197 14858 8b22e6298b7c15f1217aae8fa8544ed7 ""
+  "assets/images/Freestream_DU89_250000_AoA_5_Cp.pdf" 1698743065 15224 8c213dcacd57564a5b6820f35c0b4650 ""
   "assets/images/Freestream_DU89_500000_AoA_1_Cf.pdf" 1698686219 14915 4dd11555021fc4403d659e70a4a954e4 ""
   "assets/images/Freestream_DU89_500000_AoA_1_Cp.pdf" 1698686218 15093 ee17f0619a114323f28bad2e94e78d49 ""
   "assets/images/Freestream_DU89_500000_AoA_5_Cf.pdf" 1698687611 14794 8ea302619de3cb0b124f72f4633c8d05 ""
@@ -339,11 +339,11 @@
   "assets/logos/logo_RGB_negative.pdf" 1697449802 27349 a3e3ead9e2810cb54022de8a457206af ""
   "beamerthemesintef.sty" 1697459740 9662 9e3476c249829d23dd0b395d324041ce ""
   "c:/Users/Carlo Brunelli/Documents/GitHub/Presentations/PhD_updates/20231031_update/main.tex" 1698663021 1787 5181d126b2aa9ffa2a42cabd9917b31a ""
-  "main.aux" 1698740693 13034 1691efe0b4d4172b9b60995baf5fd164 "pdflatex"
-  "main.nav" 1698740693 6033 9f8ae1d4c06c858bca32f8953780d961 "pdflatex"
-  "main.out" 1698740693 1030 9458075c6ac37cd11ebbdb21bdaea8a8 "pdflatex"
+  "main.aux" 1698743094 13034 1691efe0b4d4172b9b60995baf5fd164 "pdflatex"
+  "main.nav" 1698743094 6033 9f8ae1d4c06c858bca32f8953780d961 "pdflatex"
+  "main.out" 1698743094 1030 9458075c6ac37cd11ebbdb21bdaea8a8 "pdflatex"
   "main.tex" 1698663021 1787 5181d126b2aa9ffa2a42cabd9917b31a ""
-  "main.toc" 1698740693 429 ea44df3d6ddf90493db8ec6da0b62d33 "pdflatex"
+  "main.toc" 1698743094 429 ea44df3d6ddf90493db8ec6da0b62d33 "pdflatex"
   "sintefcolor.sty" 1697450986 1026 b8145e85274f2a637fb685704e6eb6e9 ""
   (generated)
   "main.aux"
