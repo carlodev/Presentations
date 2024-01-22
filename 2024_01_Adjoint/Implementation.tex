@@ -79,11 +79,14 @@ end
     
 \end{frame}
 
-\begin{frame}{Computing Reference values}
+\begin{frame}[fragile]{Computing Reference values}
 Both primal and adjoint flow are solved on the original mesh $\Omega$.
 $$I = I_c + \int_\Omega\Psi\cdot\mathcal{R} = I_{1,ref}+I_{2,ref} $$
 
 If we want to minimize $C_D$: $I_c=C_D$
+\begin{minted}[fontsize=\footnotesize,bgcolor=bg]{julia1}
+  I2 = sum(∫(ϕu⋅((∇(uh))'⋅uh + ∇(ph)))dΩ + ∫(ϕp⋅(∇⋅(uh)))dΩ)
+\end{minted}
 \end{frame}
 
 

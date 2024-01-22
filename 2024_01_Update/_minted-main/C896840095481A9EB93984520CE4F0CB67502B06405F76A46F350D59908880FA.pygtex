@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{function} \PYG{n+nf}{compute\PYGZus{}airfoil\PYGZus{}forces}\PYG{p}{(}\PYG{n+nv}{uh}\PYG{p}{,}\PYG{n+nv}{ph}\PYG{p}{,}\PYG{n+nv}{nΓ}\PYG{p}{,}\PYG{n+nv}{dΓ}\PYG{p}{,}\PYG{n+nv}{params}\PYG{o}{::}\PYG{n+nb}{Dict}\PYG{p}{\PYGZob{}}\PYG{n+nb}{Symbol}\PYG{p}{,}\PYG{n+nb}{Any}\PYG{p}{\PYGZcb{})}
+    \PYG{n+nd}{@unpack} \PYG{n+nv}{tagname}\PYG{p}{,}\PYG{n+nv}{ν} \PYG{o}{=} \PYG{n+nv}{params}
+    \PYG{n+nv}{IForce} \PYG{o}{=} \PYG{n+nv}{∫}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n+nv}{ph} \PYG{o}{⋅} \PYG{n+nv}{nΓ} \PYG{o}{+} \PYG{n+nv}{ν}\PYG{o}{*} \PYG{n+nb}{transpose}\PYG{p}{(}\PYG{n+nv}{∇}\PYG{p}{(}\PYG{n+nv}{uh}\PYG{p}{))} \PYG{o}{⋅} \PYG{n+nv}{nΓ}\PYG{p}{)}\PYG{n+nv}{dΓ}
+    \PYG{n+nv}{D}\PYG{p}{,}\PYG{n+nv}{L} \PYG{o}{=} \PYG{n+nb}{sum}\PYG{p}{(}\PYG{n+nv}{IForce}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n+nv}{D}\PYG{p}{,}\PYG{n+nv}{L}
+\PYG{k}{end}
+\end{Verbatim}

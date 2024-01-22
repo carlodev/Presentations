@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{n+nv}{I2} \PYG{o}{=} \PYG{n+nb}{sum}\PYG{p}{(}\PYG{n+nv}{∫}\PYG{p}{(}\PYG{n+nf}{ϕu⋅}\PYG{p}{((}\PYG{n+nv}{∇}\PYG{p}{(}\PYG{n+nv}{uh}\PYG{p}{))}\PYG{o}{\PYGZsq{}⋅}\PYG{n+nv}{uh} \PYG{o}{+} \PYG{n+nv}{∇}\PYG{p}{(}\PYG{n+nv}{ph}\PYG{p}{)))}\PYG{n+nv}{dΩ} \PYG{o}{+} \PYG{n+nv}{∫}\PYG{p}{(}\PYG{n+nf}{ϕp⋅}\PYG{p}{(}\PYG{n+nv}{∇⋅}\PYG{p}{(}\PYG{n+nv}{uh}\PYG{p}{)))}\PYG{n+nv}{dΩ}\PYG{p}{)}
+\end{Verbatim}

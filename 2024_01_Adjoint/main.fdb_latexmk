@@ -1,11 +1,11 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1705330900 -1
-  "main.bcf" 1705330899 107410 6288a29a4262884190127bc45429c5ba "lualatex"
+["biber main"] 1705477811 "main.bcf" "main.bbl" "main" 1705477833 0
+  "main.bcf" 1705477833 107410 6288a29a4262884190127bc45429c5ba "lualatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["lualatex"] 1705330889 "c:/Users/Carlo Brunelli/Documents/GitHub/Presentations/2024_01_Adjoint/main.tex" "main.pdf" "main" 1705330900 0
+["lualatex"] 1705477825 "c:/Users/Carlo Brunelli/Documents/GitHub/Presentations/2024_01_Adjoint/main.tex" "main.pdf" "main" 1705477833 0
   "//?/c:/users/carlo brunelli/appdata/local/programs/miktex/fonts/opentype/public/lm-math/latinmodern-math.otf" 1409939940 733736 20d3eb5d31e6373942bca10f39f669ce ""
   "//?/c:/users/carlo brunelli/appdata/local/programs/miktex/fonts/truetype/google/carlito/carlito-bold.ttf" 1664974090 690516 eec265926ad8833118d048041f71e88d ""
   "//?/c:/users/carlo brunelli/appdata/local/programs/miktex/fonts/truetype/google/carlito/carlito-regular.ttf" 1664974090 635996 312c2135a8b00cf8432e7e76b6fc5095 ""
@@ -372,13 +372,14 @@
   "C:/Users/Carlo Brunelli/AppData/Local/Programs/MiKTeX/tex/luatex/luaotfload/luaotfload.lua" 1693506766 13565 c514d92e6ff6be7b2f35d8e0eb56185c ""
   "C:/Users/Carlo Brunelli/AppData/Roaming/MiKTeX/tex/generic/config/language.dat" 1698063025 2269 c2be9efecb8e53facf8213ae101f16af ""
   "Considerations.tex" 1705330888 563 efb57d7c59355aff1b14ed8c84acb58a ""
-  "Implementation.tex" 1705329903 4045 8266c300290b4128653c3111af3ba089 ""
-  "TestCases.tex" 1705329740 4291 f8f0efd4156eb52c6bf4c0b5858fc439 ""
+  "Implementation.tex" 1705337136 4208 524e647dca97da81a07b7b063178906b ""
+  "TestCases.tex" 1705477773 4322 b8307e27fccdd6a459b4715f3656f2f0 ""
   "_minted-main/2046E9FCD21B3219E9C7CD32B5B8066E67502B06405F76A46F350D59908880FA.pygtex" 1705322722 3045 c1697fe61e54f1e0d6fe441a2c17b0c0 ""
   "_minted-main/80257A020D826C1387C496DE38DEC6EA67502B06405F76A46F350D59908880FA.pygtex" 1705323665 722 720724856d1e4d7d7b32670b7d2ee070 ""
   "_minted-main/C896840095481A9EB93984520CE4F0CB67502B06405F76A46F350D59908880FA.pygtex" 1705322721 922 0d9f6ca7dea26e47f4d4ae9a7200e5a9 ""
   "_minted-main/EA6077C9ABE8D7DA6724832621C1B0C467502B06405F76A46F350D59908880FA.pygtex" 1705324801 568 cad027dbeb2f036fc2976f5d88ebad47 ""
   "_minted-main/F32EB538287979CDC5CAEF53BCE3ECAC67502B06405F76A46F350D59908880FA.pygtex" 1705322675 3454 ca4cf4219c7a85d785919e3676ece2ab ""
+  "_minted-main/FCA7F6EBFE01CF40BC41531292872C2067502B06405F76A46F350D59908880FA.pygtex" 1705337366 468 b105d8f9a9386477526381b96da4ed6d ""
   "_minted-main/default.pygstyle" 1705317429 6466 683ea4fd81022f120108d52c508c17f9 ""
   "assets/images/Adjoint_FD.pdf" 1705329267 11867 6bbfe89e6c97f7117e96667e6fc535ae ""
   "assets/images/MeshMorphedAirfoil.png" 1705324245 15905523 c9d60e7f5be56b5be1ce337b13007913 ""
@@ -398,17 +399,17 @@
   "assets/logos/logo_RGB.png" 1655966955 19024 3900e5be523a3cc3139b1a1394f7e0cd ""
   "assets/logos/logo_RGB_negative.pdf" 1697449802 27349 a3e3ead9e2810cb54022de8a457206af ""
   "beamerthemesintef.sty" 1697459740 9662 9e3476c249829d23dd0b395d324041ce ""
-  "c:/Users/Carlo Brunelli/Documents/GitHub/Presentations/2024_01_Adjoint/main.tex" 1705327264 1306 02bb42120392e3895b7ba665aac1728c ""
+  "c:/Users/Carlo Brunelli/Documents/GitHub/Presentations/2024_01_Adjoint/main.tex" 1705337358 1250 7a716cca6be729a4245677481658b0f1 ""
   "dejavusansmono-bold.ttf" 1705294024 318392 8b45602bdd3b86e7311216bef2ef2eb0 ""
   "dejavusansmono.ttf" 1705294024 335068 3afa654004a73dfbafa5fed3ef480275 ""
-  "main.aux" 1705330898 5345 9f56411d0aca64a97cd386d34ec109ee "lualatex"
-  "main.bbl" 1705325740 1988 1f54f4b65dc53bfea59bbf0b4b7a8271 "biber main"
-  "main.nav" 1705330899 2788 e0b565e99f7ffe1eb619071bc2aeb31e "lualatex"
-  "main.out" 1705330898 322 9750b7fab2921bb9640dfde559d7c58c "lualatex"
-  "main.run.xml" 1705330899 2342 07f4b92116aa0438cc18ba366dacea09 "lualatex"
-  "main.tex" 1705327264 1306 02bb42120392e3895b7ba665aac1728c ""
-  "main.toc" 1705330899 178 3ef0b8b8d09ffdfb7f5f256e861a68c4 "lualatex"
-  "main.vrb" 1705330896 740 ce37ebc5573837d720fc5ef1a3cd8bf0 "lualatex"
+  "main.aux" 1705477832 5420 03e7121bc469523355a04c44cc10aab4 "lualatex"
+  "main.bbl" 1705477816 1988 1f54f4b65dc53bfea59bbf0b4b7a8271 "biber main"
+  "main.nav" 1705477833 2788 e0b565e99f7ffe1eb619071bc2aeb31e "lualatex"
+  "main.out" 1705477832 322 9750b7fab2921bb9640dfde559d7c58c "lualatex"
+  "main.run.xml" 1705477833 2342 07f4b92116aa0438cc18ba366dacea09 "lualatex"
+  "main.tex" 1705337358 1250 7a716cca6be729a4245677481658b0f1 ""
+  "main.toc" 1705477833 178 3ef0b8b8d09ffdfb7f5f256e861a68c4 "lualatex"
+  "main.vrb" 1705477830 375 755afcb83a723f9028079cfb355501a7 "lualatex"
   "minted.sty" 1705309123 49628 346b97c41d54ef753d3e2299e21c4996 ""
   "sintefcolor.sty" 1697450986 1026 b8145e85274f2a637fb685704e6eb6e9 ""
   (generated)

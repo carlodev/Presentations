@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+      \PYG{n+nv}{wu} \PYG{o}{=} \PYG{p}{[}\PYG{l+m+mf}{0.17085744048372403}\PYG{p}{,} \PYG{l+m+mf}{0.15451770272052714}\PYG{p}{,} \PYG{l+m+mf}{0.15810479767059346}\PYG{p}{,} \PYG{l+m+mf}{0.1359573306370066}\PYG{p}{,}
+       \PYG{l+m+mf}{0.14221259398479932}\PYG{p}{,} \PYG{l+m+mf}{0.14001089993692417}\PYG{p}{]}
+      \PYG{n+nv}{wl} \PYG{o}{=} \PYG{l+m+mi}{\PYGZhy{}1} \PYG{p}{.}\PYG{o}{*} \PYG{p}{[}\PYG{l+m+mf}{0.17085744048372403}\PYG{p}{,} \PYG{l+m+mf}{0.15451770272052714}\PYG{p}{,} \PYG{l+m+mf}{0.15810479767059346}\PYG{p}{,} \PYG{l+m+mf}{0.1359573306370066}\PYG{p}{,}
+      \PYG{l+m+mf}{0.14221259398479932}\PYG{p}{,} \PYG{l+m+mf}{0.14001089993692417}\PYG{p}{]}
+\end{Verbatim}

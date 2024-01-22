@@ -1,0 +1,59 @@
+\documentclass{beamer}
+\usepackage{amsfonts,amsmath,oldgerm}
+
+% \usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{siunitx}
+\usepackage{bm}
+\usepackage{minted}
+
+
+\usepackage{fontspec,unicode-math}
+\setmonofont{DejaVuSansMono}[Scale=0.8]
+
+
+
+\usepackage[english]{babel}
+\usepackage[export]{adjustbox}
+\usepackage{caption} %For subfigures
+\usepackage{subcaption} %For subfigures
+\usepackage{placeins} %FloatBarriers
+
+\usetheme{sintef}
+
+\newcommand{\testcolor}[1]{\colorbox{#1}{\textcolor{#1}{test}}~\texttt{#1}}
+
+
+
+\usefonttheme[onlymath]{serif}
+\graphicspath{{assets/images/}}
+
+
+\titlebackground*{assets/logos/background}
+
+
+\newcommand{\hrefcol}[2]{\textcolor{cyan}{\href{#1}{#2}}}
+
+\title{Numerical study of the airflow over a high-altitude pseudo-satellite wing}
+\subtitle{Update}
+
+\author{\href{mailto:mail@carlobrunelli.com}{Carlo Brunelli}}
+
+
+\newcommand{\VV}[1] {\vv{\vv{#1}}}
+
+\begin{document}
+\maketitle
+
+
+\section{Hardcore validation}
+\input{HardCore.tex}
+
+
+\section{Adjoint method}
+\input{Adjoint.tex}
+\end{document}

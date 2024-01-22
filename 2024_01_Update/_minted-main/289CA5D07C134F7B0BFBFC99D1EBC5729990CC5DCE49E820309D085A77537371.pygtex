@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{n}{transpose}\PYG{p}{(}\PYG{n}{∇}\PYG{p}{(}\PYG{n}{uh}\PYG{p}{)}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{⋅}\PYG{+w}{ }\PYG{n}{nΓ}
+\end{Verbatim}
